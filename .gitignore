@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pkl
+*.pt
+*.pth
+data/processed/
+results/
+.env
+*.ipynb_checkpoints
