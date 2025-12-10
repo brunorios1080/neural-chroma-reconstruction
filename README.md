@@ -15,8 +15,7 @@ bitrate-aware refinement and temporal consistency.
 ## Current Objectives
 -Merge a model using version 5 and version 6.
 Version 5 Model: Trained in Y and low_cb, low_cr of 4:2:0. This model is intended to hallucinate images.
-PSNR Avg: 47.82 dB
-SSIM avg: .998
+```bash
 ================================================================================
 COMPARISON REPORT (3703 images) | Mode: VAL
 ================================================================================
@@ -63,7 +62,7 @@ SSIM       | Bilinear   | 0.9985     | 0.9960     | 0.9996
 SSIM       | AI Model   | 0.9988     | 0.9966     | 0.9998
 ================================================================================
 Chroma PSNR Gain: +1.01 dB
-
+```
 ---
 
 ## Environment
