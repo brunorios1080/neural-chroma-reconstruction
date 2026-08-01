@@ -1,8 +1,12 @@
 __pycache__/
+.DS_Store
 *.pyc
 *.pyo
 *.pkl
 data/processed/
 results/
+runs/
 .env
 *.ipynb_checkpoints
+.pytest_cache/
+.coverage
