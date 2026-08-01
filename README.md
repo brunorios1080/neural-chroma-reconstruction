@@ -145,6 +145,27 @@ python scripts/evaluate.py \
 Use `--crop 0` to evaluate complete images. The report records mean, minimum, and
 maximum values and lists skipped images.
 
+## TabPFN V3 chroma imputation experiment
+
+The optional hosted TabPFN experiment treats pixels as tabular rows. It uses
+full-resolution luma and spatial features with the observed 4:2:0 Cr/Cb samples,
+then fits one V3 regressor per chroma channel. Install `tabpfn-client`, configure
+`TABPFN_TOKEN`, and run:
+
+```bash
+python scripts/tabpfn_chroma_impute.py \
+  --image data/raw/coco/val2017/000000000139.jpg \
+  --crop 64 \
+  --output-dir results/tabpfn_v3_chroma
+```
+
+The output includes the original, bilinear reconstruction, TabPFN reconstruction,
+a side-by-side comparison, and a JSON report with RGB/chroma PSNR and SSIM plus
+chroma edge and gradient errors. API inference sends the crop's derived feature
+table and low-resolution chroma targets to Prior Labs. This is an image-adaptive
+imputation experiment, not a replacement training pipeline or a representative
+dataset benchmark.
+
 ## Tests
 
 ```bash
