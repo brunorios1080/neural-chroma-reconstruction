@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -17,7 +16,8 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from chroma.data import read_rgb, rgb_to_ycrcb, simulate_420
-from chroma.metrics import image_metrics, ycrcb_to_rgb_float
+from chroma.metrics import reconstruction_metrics, ycrcb_to_rgb_float
+from chroma.tabpfn import reconstruct
 
 
 def parse_args() -> argparse.Namespace:
@@ -50,87 +50,6 @@ def center_crop(image: np.ndarray, size: int) -> np.ndarray:
     top = (height - size) // 2
     left = (width - size) // 2
     return image[top : top + size, left : left + size]
-
-
-def make_features(luma: np.ndarray) -> np.ndarray:
-    """Build per-pixel spatial and luma features without using target chroma."""
-    height, width = luma.shape
-    yy, xx = np.mgrid[:height, :width].astype(np.float32)
-    x = (xx + 0.5) / width * 2.0 - 1.0
-    y = (yy + 0.5) / height * 2.0 - 1.0
-
-    blur_3 = cv2.GaussianBlur(luma, (3, 3), 0)
-    blur_7 = cv2.GaussianBlur(luma, (7, 7), 0)
-    dx = cv2.Sobel(luma, cv2.CV_32F, 1, 0, ksize=3) / 8.0
-    dy = cv2.Sobel(luma, cv2.CV_32F, 0, 1, ksize=3) / 8.0
-    gradient = np.hypot(dx, dy)
-
-    return np.stack(
-        (
-            x,
-            y,
-            x * y,
-            x * x,
-            y * y,
-            np.sin(np.pi * x),
-            np.cos(np.pi * x),
-            np.sin(np.pi * y),
-            np.cos(np.pi * y),
-            luma,
-            blur_3,
-            blur_7,
-            luma - blur_3,
-            dx,
-            dy,
-            gradient,
-        ),
-        axis=2,
-    ).astype(np.float32)
-
-
-def area_downsample(image: np.ndarray) -> np.ndarray:
-    height, width = image.shape[:2]
-    return cv2.resize(
-        image, (width // 2, height // 2), interpolation=cv2.INTER_AREA
-    )
-
-
-def chroma_gradient_mae(reference: np.ndarray, candidate: np.ndarray) -> float:
-    errors = []
-    for channel in range(2):
-        ref = reference[:, :, channel]
-        pred = candidate[:, :, channel]
-        for dx, dy in ((1, 0), (0, 1)):
-            ref_gradient = cv2.Sobel(ref, cv2.CV_32F, dx, dy, ksize=3) / 8.0
-            pred_gradient = cv2.Sobel(pred, cv2.CV_32F, dx, dy, ksize=3) / 8.0
-            errors.append(np.abs(ref_gradient - pred_gradient))
-    return float(np.mean(errors))
-
-
-def evaluate(reference: np.ndarray, candidate: np.ndarray) -> dict[str, float]:
-    scores = image_metrics(reference, candidate)
-    reference_chroma = reference[:, :, 1:3]
-    candidate_chroma = candidate[:, :, 1:3]
-    chroma_error = np.mean(np.abs(reference_chroma - candidate_chroma), axis=2)
-
-    edge_strength = np.zeros(reference.shape[:2], dtype=np.float32)
-    for channel in range(2):
-        chroma = reference_chroma[:, :, channel]
-        dx = cv2.Sobel(chroma, cv2.CV_32F, 1, 0, ksize=3) / 8.0
-        dy = cv2.Sobel(chroma, cv2.CV_32F, 0, 1, ksize=3) / 8.0
-        edge_strength += np.hypot(dx, dy)
-    edge_mask = edge_strength >= np.percentile(edge_strength, 75.0)
-
-    scores.update(
-        {
-            "chroma_mae": float(np.mean(chroma_error)),
-            "chroma_edge_mae": float(np.mean(chroma_error[edge_mask])),
-            "chroma_gradient_mae": chroma_gradient_mae(
-                reference_chroma, candidate_chroma
-            ),
-        }
-    )
-    return scores
 
 
 def save_rgb(path: Path, ycrcb: np.ndarray) -> None:
@@ -172,45 +91,12 @@ def save_comparison(
 
 def main() -> None:
     args = parse_args()
-    token = os.environ.get("TABPFN_TOKEN")
-    if not token:
-        raise RuntimeError("TABPFN_TOKEN is not set in the active environment")
-
-    try:
-        import tabpfn_client
-        from tabpfn_client import TabPFNRegressor
-    except ImportError as error:
-        raise RuntimeError(
-            "Install the hosted client with: pip install --upgrade tabpfn-client"
-        ) from error
-
-    tabpfn_client.set_access_token(token)
     target = rgb_to_ycrcb(center_crop(read_rgb(args.image), args.crop))
     baseline = simulate_420(target)
-    features = make_features(target[:, :, 0])
-    low_features = area_downsample(features)
-    low_chroma = area_downsample(target[:, :, 1:3])
-    train_x = low_features.reshape(-1, low_features.shape[2])
-    test_x = features.reshape(-1, features.shape[2])
+    prediction, metadata = reconstruct(target, args.model_path, args.seed)
 
-    predicted_channels = []
-    for channel, name in enumerate(("Cr", "Cb")):
-        print(f"Fitting {name} with {len(train_x)} observed chroma samples...")
-        regressor = TabPFNRegressor(
-            model_path=args.model_path,
-            random_state=args.seed,
-        )
-        regressor.fit(train_x, low_chroma[:, :, channel].reshape(-1))
-        prediction = np.asarray(regressor.predict(test_x), dtype=np.float32)
-        predicted_channels.append(prediction.reshape(target.shape[:2]))
-
-    tabpfn_chroma = np.stack(predicted_channels, axis=2)
-    prediction = np.concatenate(
-        (target[:, :, 0:1], np.clip(tabpfn_chroma, 0.0, 1.0)), axis=2
-    )
-
-    baseline_scores = evaluate(target, baseline)
-    tabpfn_scores = evaluate(target, prediction)
+    baseline_scores = reconstruction_metrics(target, baseline)
+    tabpfn_scores = reconstruction_metrics(target, prediction)
     higher_is_better = {"rgb_psnr", "rgb_ssim", "chroma_psnr", "chroma_ssim"}
     improvement = {
         metric: (
@@ -223,10 +109,7 @@ def main() -> None:
     report = {
         "image": str(args.image),
         "crop": args.crop,
-        "model_path": args.model_path,
-        "train_rows": len(train_x),
-        "test_rows": len(test_x),
-        "features": int(train_x.shape[1]),
+        **metadata,
         "baseline": baseline_scores,
         "tabpfn_v3": tabpfn_scores,
         "improvement": improvement,

@@ -56,14 +56,16 @@ def ycrcb_to_bgr_uint8(ycrcb: np.ndarray) -> np.ndarray:
     return cv2.cvtColor(ycrcb_u8, cv2.COLOR_YCrCb2BGR)
 
 
-def simulate_420(ycrcb: np.ndarray) -> np.ndarray:
-    """Return Y plus chroma downsampled to 4:2:0 and bilinearly restored."""
+def simulate_420(
+    ycrcb: np.ndarray, interpolation: int = cv2.INTER_LINEAR
+) -> np.ndarray:
+    """Return Y plus chroma downsampled to 4:2:0 and restored to full size."""
     height, width = ycrcb.shape[:2]
     low_size = (max(1, (width + 1) // 2), max(1, (height + 1) // 2))
     channels = [ycrcb[:, :, 0:1]]
     for index in (1, 2):
         low = cv2.resize(ycrcb[:, :, index], low_size, interpolation=cv2.INTER_AREA)
-        restored = cv2.resize(low, (width, height), interpolation=cv2.INTER_LINEAR)
+        restored = cv2.resize(low, (width, height), interpolation=interpolation)
         channels.append(restored[:, :, None])
     return np.concatenate(channels, axis=2).astype(np.float32, copy=False)
 

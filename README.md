@@ -166,6 +166,24 @@ table and low-resolution chroma targets to Prior Labs. This is an image-adaptive
 imputation experiment, not a replacement training pipeline or a representative
 dataset benchmark.
 
+Run a seeded paired benchmark against bilinear, bicubic, V5, and V6 with:
+
+```bash
+python scripts/benchmark_coco_tabpfn.py \
+  --src data/raw/coco/val2017 \
+  --images 20 \
+  --crop 64 \
+  --seed 2026 \
+  --output-dir results/coco_tabpfn_benchmark
+```
+
+Each completed crop is cached before the next API request, so rerunning the same
+command resumes without consuming quota again. Pass `--overwrite` only when the
+hosted predictions should be recomputed. The benchmark writes per-image metrics
+and images, aggregate statistics, directional paired deltas, win rates, 95%
+bootstrap confidence intervals, and a contact sheet. See the
+[20-crop pilot summary](notes/tabpfn_v3_coco_pilot.md) for the first seeded run.
+
 ## Tests
 
 ```bash

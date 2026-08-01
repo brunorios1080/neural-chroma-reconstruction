@@ -70,3 +70,47 @@ def image_metrics(
         "chroma_psnr": psnr(target[:, :, 1:3], candidate[:, :, 1:3], psnr_cap),
         "chroma_ssim": ssim(target[:, :, 1:3], candidate[:, :, 1:3]),
     }
+
+
+def chroma_gradient_mae(reference: np.ndarray, candidate: np.ndarray) -> float:
+    """Mean absolute error between horizontal and vertical chroma gradients."""
+    errors = []
+    for channel in range(2):
+        ref = reference[:, :, channel]
+        pred = candidate[:, :, channel]
+        for dx, dy in ((1, 0), (0, 1)):
+            ref_gradient = cv2.Sobel(ref, cv2.CV_32F, dx, dy, ksize=3) / 8.0
+            pred_gradient = cv2.Sobel(pred, cv2.CV_32F, dx, dy, ksize=3) / 8.0
+            errors.append(np.abs(ref_gradient - pred_gradient))
+    return float(np.mean(errors))
+
+
+def reconstruction_metrics(
+    reference_ycrcb: np.ndarray, candidate_ycrcb: np.ndarray
+) -> dict[str, float]:
+    """Image metrics plus chroma pixel, edge, and gradient errors."""
+    reference_ycrcb = np.clip(reference_ycrcb, 0.0, 1.0)
+    candidate_ycrcb = np.clip(candidate_ycrcb, 0.0, 1.0)
+    scores = image_metrics(reference_ycrcb, candidate_ycrcb)
+    reference_chroma = reference_ycrcb[:, :, 1:3]
+    candidate_chroma = candidate_ycrcb[:, :, 1:3]
+    chroma_error = np.mean(np.abs(reference_chroma - candidate_chroma), axis=2)
+
+    edge_strength = np.zeros(reference_ycrcb.shape[:2], dtype=np.float32)
+    for channel in range(2):
+        chroma = reference_chroma[:, :, channel]
+        dx = cv2.Sobel(chroma, cv2.CV_32F, 1, 0, ksize=3) / 8.0
+        dy = cv2.Sobel(chroma, cv2.CV_32F, 0, 1, ksize=3) / 8.0
+        edge_strength += np.hypot(dx, dy)
+    edge_mask = edge_strength >= np.percentile(edge_strength, 75.0)
+
+    scores.update(
+        {
+            "chroma_mae": float(np.mean(chroma_error)),
+            "chroma_edge_mae": float(np.mean(chroma_error[edge_mask])),
+            "chroma_gradient_mae": chroma_gradient_mae(
+                reference_chroma, candidate_chroma
+            ),
+        }
+    )
+    return scores
