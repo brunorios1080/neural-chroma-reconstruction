@@ -4,6 +4,7 @@ __pycache__/
 *.pyo
 *.pkl
 data/processed/
+data/raw/
 results/
 runs/
 .env
