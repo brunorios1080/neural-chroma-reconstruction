@@ -1,0 +1,141 @@
+\begin{thebibliography}{10}
+
+\bibitem{ronneberger2015unet}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock {U-Net}: Convolutional networks for biomedical image segmentation.
+\newblock In {\em Medical Image Computing and Computer-Assisted Intervention},
+  volume 9351 of {\em Lecture Notes in Computer Science}, pages 234--241, 2015.
+
+\bibitem{isola2017pix2pix}
+Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei~A. Efros.
+\newblock Image-to-image translation with conditional adversarial networks.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 1125--1134, 2017.
+
+\bibitem{keys1981cubic}
+Robert~G. Keys.
+\newblock Cubic convolution interpolation for digital image processing.
+\newblock {\em IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  29(6):1153--1160, 1981.
+
+\bibitem{kopf2007jbu}
+Johannes Kopf, Michael~F. Cohen, Dani Lischinski, and Matt Uyttendaele.
+\newblock Joint bilateral upsampling.
+\newblock {\em ACM Transactions on Graphics}, 26(3), 2007.
+
+\bibitem{he2010guided}
+Kaiming He, Jian Sun, and Xiaoou Tang.
+\newblock Guided image filtering.
+\newblock In {\em Computer Vision--ECCV 2010}, volume 6311 of {\em Lecture
+  Notes in Computer Science}, pages 1--14, 2010.
+
+\bibitem{dong2014srcnn}
+Chao Dong, Chen~Change Loy, Kaiming He, and Xiaoou Tang.
+\newblock Learning a deep convolutional network for image super-resolution.
+\newblock In {\em Computer Vision--ECCV 2014}, volume 8692 of {\em Lecture
+  Notes in Computer Science}, pages 184--199, 2014.
+
+\bibitem{lim2017edsr}
+Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, and Kyoung~Mu Lee.
+\newblock Enhanced deep residual networks for single image super-resolution.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition Workshops}, pages 1132--1140, 2017.
+
+\bibitem{liang2021swinir}
+Jingyun Liang, Jiezhang Cao, Guolei Sun, Kai Zhang, Luc Van~Gool, and Radu
+  Timofte.
+\newblock {SwinIR}: Image restoration using swin transformer.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision Workshops}, pages 1833--1844, 2021.
+
+\bibitem{chen2022nafnet}
+Liangyu Chen, Xiaojie Chu, Xiangyu Zhang, and Jian Sun.
+\newblock Simple baselines for image restoration.
+\newblock In {\em Computer Vision--ECCV 2022}, volume 13667 of {\em Lecture
+  Notes in Computer Science}, pages 17--33, 2022.
+
+\bibitem{li2017chroma}
+Yue Li, Dong Liu, Houqiang Li, Li~Li, Feng Wu, Hong Zhang, and Haitao Yang.
+\newblock Convolutional neural network-based block up-sampling for intra frame
+  coding.
+\newblock {\em arXiv preprint arXiv:1702.06728}, 2017.
+
+\bibitem{wallace1991jpeg}
+Gregory~K. Wallace.
+\newblock The {JPEG} still picture compression standard.
+\newblock {\em Communications of the ACM}, 34(4):30--44, 1991.
+
+\bibitem{wiegand2003h264}
+Thomas Wiegand, Gary~J. Sullivan, Gisle Bj{o}ntegaard, and Ajay Luthra.
+\newblock Overview of the {H.264/AVC} video coding standard.
+\newblock {\em IEEE Transactions on Circuits and Systems for Video Technology},
+  13(7):560--576, 2003.
+
+\bibitem{sullivan2012hevc}
+Gary~J. Sullivan, Jens-Rainer Ohm, Woo-Jin Han, and Thomas Wiegand.
+\newblock Overview of the high efficiency video coding ({HEVC}) standard.
+\newblock {\em IEEE Transactions on Circuits and Systems for Video Technology},
+  22(12):1649--1668, 2012.
+
+\bibitem{han2021av1}
+Jingning Han, Bohan Li, Debargha Mukherjee, Ching-Han Chiang, Adrian Grange,
+  Cheng Chen, Hui Su, Sarah Parker, Sai Deng, Urvang Joshi, Yue Chen, Yunqing
+  Wang, Paul Wilkins, Yaowu Xu, and James Bankoski.
+\newblock A technical overview of {AV1}.
+\newblock {\em Proceedings of the IEEE}, 109(9):1435--1462, 2021.
+
+\bibitem{reich2024diffjpeg}
+Christoph Reich, Biplob Debnath, Deep Patel, and Srimat Chakradhar.
+\newblock Differentiable {JPEG}: The devil is in the details.
+\newblock In {\em Proceedings of the IEEE/CVF Winter Conference on Applications
+  of Computer Vision}, pages 4126--4135, 2024.
+
+\bibitem{bahat2021explorable}
+Yuval Bahat and Tomer Michaeli.
+\newblock What's in the image? explorable decoding of compressed images.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 2908--2917, 2021.
+
+\bibitem{hollmann2025tabpfn}
+Noah Hollmann, Samuel M{\"u}ller, Lennart Purucker, Arjun Krishnakumar, Max
+  K{\"o}rfer, Shi~Bin Hoo, Robin~Tibor Schirrmeister, Frank Hutter, et~al.
+\newblock Accurate predictions on small data with a tabular foundation model.
+\newblock {\em Nature}, 637:319--326, 2025.
+
+\bibitem{he2016resnet}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 770--778, 2016.
+
+\bibitem{lin2014coco}
+Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva
+  Ramanan, Piotr Doll{\'a}r, and C.~Lawrence Zitnick.
+\newblock Microsoft {COCO}: Common objects in context.
+\newblock In {\em Computer Vision--ECCV 2014}, pages 740--755, 2014.
+
+\bibitem{agustsson2017div2k}
+Eirikur Agustsson and Radu Timofte.
+\newblock {NTIRE} 2017 challenge on single image super-resolution: Dataset and
+  study.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition Workshops}, pages 126--135, 2017.
+
+\bibitem{wang2004ssim}
+Zhou Wang, Alan~C. Bovik, Hamid~R. Sheikh, and Eero~P. Simoncelli.
+\newblock Image quality assessment: From error visibility to structural
+  similarity.
+\newblock {\em IEEE Transactions on Image Processing}, 13(4):600--612, 2004.
+
+\bibitem{sharma2005ciede2000}
+Gaurav Sharma, Wencheng Wu, and Edul~N. Dalal.
+\newblock The {CIEDE2000} color-difference formula: Implementation notes,
+  supplementary test data, and mathematical observations.
+\newblock {\em Color Research and Application}, 30(1):21--30, 2005.
+
+\bibitem{efron1979bootstrap}
+Bradley Efron.
+\newblock Bootstrap methods: Another look at the jackknife.
+\newblock {\em The Annals of Statistics}, 7(1):1--26, 1979.
+
+\end{thebibliography}

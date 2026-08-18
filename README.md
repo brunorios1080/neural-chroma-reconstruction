@@ -145,6 +145,46 @@ python scripts/evaluate.py \
 Use `--crop 0` to evaluate complete images. The report records mean, minimum, and
 maximum values and lists skipped images.
 
+## Publication benchmark
+
+The expanded local research protocol uses a SHA-256-addressed manifest of
+explicit lossless RGB/RGBA 4:4:4 files and rejects byte-identical images across
+train, validation, and test splits. It evaluates multiple chroma sitings and
+prefilters, actual 4:2:0 JPEG output, optional local H.264/HEVC/AV1 round trips,
+six classical methods, V5/V6, chroma-adapted SRCNN and NAF-style learned
+baselines, and the full V6 ablation matrix.
+
+```bash
+python scripts/build_research_manifest.py \
+  --dataset-root data/research_lossless \
+  --train data/research_lossless/train \
+  --validation data/research_lossless/validation \
+  --test data/research_lossless/test \
+  --output research/manifests/lossless_full.jsonl
+
+python scripts/run_ablation_matrix.py \
+  --config research/configs/ablations.json
+
+python scripts/research_benchmark.py \
+  --config research/configs/benchmark_full.json
+```
+
+Each run emits per-image JSONL, aggregate and paired bootstrap statistics,
+configuration and provenance snapshots, RGB/chroma PSNR and SSIM, CIEDE2000,
+edge errors, runtime, convolutional FLOPs, model and peak-memory measurements,
+and difficult-color-boundary contact sheets. See
+[`research/PROTOCOL.md`](research/PROTOCOL.md) for the preregistered conditions
+and evidence rules.
+
+The repository also commits a 12-image procedural fixture audit. It verifies the
+entire local pipeline and produces 1,024 method-image-condition records across
+all 28 configured groups, including real H.264, HEVC, and AV1 round trips at all
+preregistered settings, but its generated
+patterns are deliberately not presented as publication evidence. A scientific
+large-scale rerun still requires a separately supplied local lossless corpus;
+video-codec conditions additionally require an FFmpeg build with the requested
+encoders.
+
 ## TabPFN V3 chroma imputation experiment
 
 The optional hosted TabPFN experiment treats pixels as tabular rows. It uses
@@ -197,10 +237,12 @@ training runs for both models.
 
 ## Scope and limitations
 
-The training degradation represents one idealized chroma filtering and siting
-choice. It does not simulate codec quantization, ringing, bitrate changes, native
-YUV decoding, or temporal behavior. Results should be validated on actual encoded
-4:2:0 material before drawing codec-level conclusions.
+The historical V6 checkpoint was trained on one idealized degradation, and the
+original 3,703-image dataset manifest is unavailable. The publication protocol
+now measures cross-siting/filter robustness and actual codec output, but those
+new results must not be claimed until the complete local lossless benchmark is
+run and its per-image artifacts are committed. Single-frame codec tests also do
+not establish temporal stability.
 
 ## License
 

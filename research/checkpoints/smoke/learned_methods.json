@@ -1,0 +1,27 @@
+[
+  {
+    "name": "smoke_base",
+    "type": "ablation",
+    "weights": "research/checkpoints/smoke/smoke_base/best.pth"
+  },
+  {
+    "name": "smoke_no_luma",
+    "type": "ablation",
+    "weights": "research/checkpoints/smoke/smoke_no_luma/best.pth"
+  },
+  {
+    "name": "smoke_direct",
+    "type": "ablation",
+    "weights": "research/checkpoints/smoke/smoke_direct/best.pth"
+  },
+  {
+    "name": "smoke_srcnn",
+    "type": "ablation",
+    "weights": "research/checkpoints/smoke/smoke_srcnn/best.pth"
+  },
+  {
+    "name": "smoke_naf_style",
+    "type": "ablation",
+    "weights": "research/checkpoints/smoke/smoke_naf_style/best.pth"
+  }
+]

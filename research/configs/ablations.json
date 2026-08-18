@@ -1,0 +1,211 @@
+{
+  "manifest": "research/manifests/lossless_full.jsonl",
+  "dataset_root": "data/research_lossless",
+  "output_dir": "research/checkpoints/ablations",
+  "training": {
+    "epochs": 30,
+    "batch_size": 16,
+    "crop_size": 256,
+    "workers": 4,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "seed": 2026,
+    "validation_split": "validation"
+  },
+  "degradations": [
+    {
+      "name": "center_box_bilinear",
+      "siting": "center",
+      "downsample_filter": "box",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "center_triangle_bilinear",
+      "siting": "center",
+      "downsample_filter": "triangle",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "center_gaussian_bilinear",
+      "siting": "center",
+      "downsample_filter": "gaussian",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "center_lanczos3_bilinear",
+      "siting": "center",
+      "downsample_filter": "lanczos3",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_box_bilinear",
+      "siting": "left",
+      "downsample_filter": "box",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_triangle_bilinear",
+      "siting": "left",
+      "downsample_filter": "triangle",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_gaussian_bilinear",
+      "siting": "left",
+      "downsample_filter": "gaussian",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_lanczos3_bilinear",
+      "siting": "left",
+      "downsample_filter": "lanczos3",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_box_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "box",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_triangle_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "triangle",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_gaussian_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "gaussian",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_lanczos3_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "lanczos3",
+      "upsample_filter": "bilinear"
+    }
+  ],
+  "experiments": [
+    {
+      "name": "base_v6",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 64,
+      "loss": "l1"
+    },
+    {
+      "name": "no_luma",
+      "luma_guidance": false,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 64,
+      "loss": "l1"
+    },
+    {
+      "name": "direct_chroma",
+      "luma_guidance": true,
+      "global_residual": false,
+      "block_residual": true,
+      "depth": 8,
+      "width": 64,
+      "loss": "l1"
+    },
+    {
+      "name": "no_block_skips",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": false,
+      "depth": 8,
+      "width": 64,
+      "loss": "l1"
+    },
+    {
+      "name": "depth_4",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 4,
+      "width": 64,
+      "loss": "l1"
+    },
+    {
+      "name": "depth_12",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 12,
+      "width": 64,
+      "loss": "l1"
+    },
+    {
+      "name": "width_32",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 32,
+      "loss": "l1"
+    },
+    {
+      "name": "width_96",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 96,
+      "loss": "l1"
+    },
+    {
+      "name": "loss_mse",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 64,
+      "loss": "mse"
+    },
+    {
+      "name": "loss_charbonnier",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 64,
+      "loss": "charbonnier"
+    },
+    {
+      "name": "loss_l1_edge",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 64,
+      "loss": "l1_edge",
+      "edge_weight": 0.2
+    },
+    {
+      "name": "srcnn_chroma",
+      "architecture": "srcnn",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 3,
+      "width": 64,
+      "loss": "l1"
+    },
+    {
+      "name": "naf_style_chroma",
+      "architecture": "naf_style",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 8,
+      "width": 64,
+      "loss": "l1"
+    }
+  ]
+}

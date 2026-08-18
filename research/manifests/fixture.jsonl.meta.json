@@ -1,0 +1,23 @@
+{
+  "allowed_formats": [
+    "BMP",
+    "PNG",
+    "PPM",
+    "TIFF"
+  ],
+  "allowed_modes": [
+    "RGB",
+    "RGBA"
+  ],
+  "dataset_root": "../fixtures/lossless",
+  "format_version": 1,
+  "lossless_only": true,
+  "manifest_sha256": "c208b0801f5a748db5f41b43cab4566001e700608a9fe604bed1e15642dda26f",
+  "records": 12,
+  "skipped": [],
+  "splits": {
+    "test": 4,
+    "train": 6,
+    "validation": 2
+  }
+}

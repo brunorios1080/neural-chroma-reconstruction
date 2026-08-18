@@ -1,0 +1,177 @@
+{
+  "bootstrap_samples": 200,
+  "classical_methods": [
+    "nearest",
+    "bilinear",
+    "bicubic",
+    "lanczos3",
+    "guided",
+    "joint_bilateral"
+  ],
+  "crop_size": 64,
+  "dataset_root": "research/fixtures/lossless",
+  "device": "cpu",
+  "ffmpeg_executable": "auto",
+  "jpeg_qualities": [
+    30,
+    50,
+    70,
+    90
+  ],
+  "learned_methods": [
+    {
+      "name": "v6_residual",
+      "type": "legacy",
+      "version": "v6",
+      "weights": "models/version6/res_epoch_030.pth"
+    },
+    {
+      "name": "smoke_base",
+      "type": "ablation",
+      "weights": "research/checkpoints/smoke/smoke_base/best.pth"
+    },
+    {
+      "name": "smoke_no_luma",
+      "type": "ablation",
+      "weights": "research/checkpoints/smoke/smoke_no_luma/best.pth"
+    },
+    {
+      "name": "smoke_direct",
+      "type": "ablation",
+      "weights": "research/checkpoints/smoke/smoke_direct/best.pth"
+    },
+    {
+      "name": "smoke_srcnn",
+      "type": "ablation",
+      "weights": "research/checkpoints/smoke/smoke_srcnn/best.pth"
+    },
+    {
+      "name": "smoke_naf_style",
+      "type": "ablation",
+      "weights": "research/checkpoints/smoke/smoke_naf_style/best.pth"
+    }
+  ],
+  "limit": 0,
+  "manifest": "research/manifests/fixture.jsonl",
+  "output_dir": "research/reports/smoke",
+  "profile_repeats": 1,
+  "profile_warmup": 0,
+  "qualitative_count": 2,
+  "qualitative_crop_size": 32,
+  "qualitative_methods": [
+    "bilinear",
+    "bicubic",
+    "guided",
+    "joint_bilateral",
+    "v6_residual",
+    "smoke_base",
+    "smoke_srcnn",
+    "smoke_naf_style",
+    "codec_native"
+  ],
+  "seed": 2026,
+  "split": "test",
+  "synthetic_degradations": [
+    {
+      "downsample_filter": "box",
+      "name": "center_box_bilinear",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "triangle",
+      "name": "center_triangle_bilinear",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "gaussian",
+      "name": "center_gaussian_bilinear",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "lanczos3",
+      "name": "center_lanczos3_bilinear",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "box",
+      "name": "left_box_bilinear",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "triangle",
+      "name": "left_triangle_bilinear",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "gaussian",
+      "name": "left_gaussian_bilinear",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "lanczos3",
+      "name": "left_lanczos3_bilinear",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "box",
+      "name": "cosited_box_bilinear",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "triangle",
+      "name": "cosited_triangle_bilinear",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "gaussian",
+      "name": "cosited_gaussian_bilinear",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "lanczos3",
+      "name": "cosited_lanczos3_bilinear",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    }
+  ],
+  "video_codecs": [
+    {
+      "codec": "h264",
+      "qualities": [
+        18,
+        23,
+        28,
+        35
+      ]
+    },
+    {
+      "codec": "hevc",
+      "qualities": [
+        18,
+        23,
+        28,
+        35
+      ]
+    },
+    {
+      "codec": "av1",
+      "qualities": [
+        20,
+        30,
+        40,
+        50
+      ]
+    }
+  ]
+}

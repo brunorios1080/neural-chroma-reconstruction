@@ -1,0 +1,195 @@
+{
+  "manifest": "research/manifests/lossless_full.jsonl",
+  "dataset_root": "data/research_lossless",
+  "output_dir": "research/reports/full",
+  "split": "test",
+  "crop_size": 256,
+  "seed": 2026,
+  "device": "auto",
+  "ffmpeg_executable": "auto",
+  "limit": 0,
+  "profile_warmup": 2,
+  "profile_repeats": 10,
+  "bootstrap_samples": 10000,
+  "synthetic_degradations": [
+    {
+      "name": "center_box_bilinear",
+      "siting": "center",
+      "downsample_filter": "box",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "center_triangle_bilinear",
+      "siting": "center",
+      "downsample_filter": "triangle",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "center_gaussian_bilinear",
+      "siting": "center",
+      "downsample_filter": "gaussian",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "center_lanczos3_bilinear",
+      "siting": "center",
+      "downsample_filter": "lanczos3",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_box_bilinear",
+      "siting": "left",
+      "downsample_filter": "box",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_triangle_bilinear",
+      "siting": "left",
+      "downsample_filter": "triangle",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_gaussian_bilinear",
+      "siting": "left",
+      "downsample_filter": "gaussian",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "left_lanczos3_bilinear",
+      "siting": "left",
+      "downsample_filter": "lanczos3",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_box_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "box",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_triangle_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "triangle",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_gaussian_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "gaussian",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "name": "cosited_lanczos3_bilinear",
+      "siting": "cosited",
+      "downsample_filter": "lanczos3",
+      "upsample_filter": "bilinear"
+    }
+  ],
+  "classical_methods": [
+    "nearest",
+    "bilinear",
+    "bicubic",
+    "lanczos3",
+    "guided",
+    "joint_bilateral"
+  ],
+  "learned_methods": [
+    {
+      "name": "v5_unet_gan",
+      "type": "legacy",
+      "version": "v5",
+      "weights": "models/version5/epoch_010.pth"
+    },
+    {
+      "name": "v6_residual",
+      "type": "legacy",
+      "version": "v6",
+      "weights": "models/version6/res_epoch_030.pth"
+    },
+    {
+      "name": "base_v6_retrained",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/base_v6/best.pth"
+    },
+    {
+      "name": "no_luma",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/no_luma/best.pth"
+    },
+    {
+      "name": "direct_chroma",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/direct_chroma/best.pth"
+    },
+    {
+      "name": "no_block_skips",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/no_block_skips/best.pth"
+    },
+    {
+      "name": "depth_4",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/depth_4/best.pth"
+    },
+    {
+      "name": "depth_12",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/depth_12/best.pth"
+    },
+    {
+      "name": "width_32",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/width_32/best.pth"
+    },
+    {
+      "name": "width_96",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/width_96/best.pth"
+    },
+    {
+      "name": "loss_mse",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/loss_mse/best.pth"
+    },
+    {
+      "name": "loss_charbonnier",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/loss_charbonnier/best.pth"
+    },
+    {
+      "name": "loss_l1_edge",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/loss_l1_edge/best.pth"
+    },
+    {
+      "name": "srcnn_chroma",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/srcnn_chroma/best.pth"
+    },
+    {
+      "name": "naf_style_chroma",
+      "type": "ablation",
+      "weights": "research/checkpoints/ablations/naf_style_chroma/best.pth"
+    }
+  ],
+  "jpeg_qualities": [30, 50, 70, 90],
+  "video_codecs": [
+    {"codec": "h264", "qualities": [18, 23, 28, 35]},
+    {"codec": "hevc", "qualities": [18, 23, 28, 35]},
+    {"codec": "av1", "qualities": [20, 30, 40, 50]}
+  ],
+  "qualitative_count": 8,
+  "qualitative_crop_size": 64,
+  "qualitative_methods": [
+    "bilinear",
+    "bicubic",
+    "guided",
+    "joint_bilateral",
+    "v5_unet_gan",
+    "v6_residual",
+    "base_v6_retrained",
+    "srcnn_chroma",
+    "naf_style_chroma",
+    "codec_native"
+  ]
+}

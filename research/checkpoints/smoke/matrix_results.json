@@ -1,0 +1,122 @@
+[
+  {
+    "name": "smoke_base",
+    "config": {
+      "name": "smoke_base",
+      "architecture": "residual",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 1,
+      "width": 8,
+      "loss": "l1",
+      "edge_weight": 0.2
+    },
+    "best_validation_loss": 0.19569852948188782,
+    "best_checkpoint": "research/checkpoints/smoke/smoke_base/best.pth",
+    "last_checkpoint": "research/checkpoints/smoke/smoke_base/last.pth",
+    "history": [
+      {
+        "epoch": 1,
+        "training_loss": 0.2134199837843577,
+        "validation_loss": 0.19569852948188782
+      }
+    ]
+  },
+  {
+    "name": "smoke_no_luma",
+    "config": {
+      "name": "smoke_no_luma",
+      "architecture": "residual",
+      "luma_guidance": false,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 1,
+      "width": 8,
+      "loss": "l1",
+      "edge_weight": 0.2
+    },
+    "best_validation_loss": 0.16016745567321777,
+    "best_checkpoint": "research/checkpoints/smoke/smoke_no_luma/best.pth",
+    "last_checkpoint": "research/checkpoints/smoke/smoke_no_luma/last.pth",
+    "history": [
+      {
+        "epoch": 1,
+        "training_loss": 0.17391230662663779,
+        "validation_loss": 0.16016745567321777
+      }
+    ]
+  },
+  {
+    "name": "smoke_direct",
+    "config": {
+      "name": "smoke_direct",
+      "architecture": "residual",
+      "luma_guidance": true,
+      "global_residual": false,
+      "block_residual": true,
+      "depth": 1,
+      "width": 8,
+      "loss": "charbonnier",
+      "edge_weight": 0.2
+    },
+    "best_validation_loss": 0.13774916529655457,
+    "best_checkpoint": "research/checkpoints/smoke/smoke_direct/best.pth",
+    "last_checkpoint": "research/checkpoints/smoke/smoke_direct/last.pth",
+    "history": [
+      {
+        "epoch": 1,
+        "training_loss": 0.17783041298389435,
+        "validation_loss": 0.13774916529655457
+      }
+    ]
+  },
+  {
+    "name": "smoke_srcnn",
+    "config": {
+      "name": "smoke_srcnn",
+      "architecture": "srcnn",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 3,
+      "width": 8,
+      "loss": "l1",
+      "edge_weight": 0.2
+    },
+    "best_validation_loss": 0.14180245995521545,
+    "best_checkpoint": "research/checkpoints/smoke/smoke_srcnn/best.pth",
+    "last_checkpoint": "research/checkpoints/smoke/smoke_srcnn/last.pth",
+    "history": [
+      {
+        "epoch": 1,
+        "training_loss": 0.16796082258224487,
+        "validation_loss": 0.14180245995521545
+      }
+    ]
+  },
+  {
+    "name": "smoke_naf_style",
+    "config": {
+      "name": "smoke_naf_style",
+      "architecture": "naf_style",
+      "luma_guidance": true,
+      "global_residual": true,
+      "block_residual": true,
+      "depth": 1,
+      "width": 8,
+      "loss": "l1",
+      "edge_weight": 0.2
+    },
+    "best_validation_loss": 0.13023421168327332,
+    "best_checkpoint": "research/checkpoints/smoke/smoke_naf_style/best.pth",
+    "last_checkpoint": "research/checkpoints/smoke/smoke_naf_style/last.pth",
+    "history": [
+      {
+        "epoch": 1,
+        "training_loss": 0.14732388158639273,
+        "validation_loss": 0.13023421168327332
+      }
+    ]
+  }
+]

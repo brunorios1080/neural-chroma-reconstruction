@@ -1,0 +1,546 @@
+[
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_box_bilinear",
+    "difficulty": 0.16830120980739594,
+    "file": "qualitative/center_box_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_box_bilinear",
+    "difficulty": 0.15314063429832458,
+    "file": "qualitative/center_box_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_triangle_bilinear",
+    "difficulty": 0.17543919384479523,
+    "file": "qualitative/center_triangle_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_triangle_bilinear",
+    "difficulty": 0.1600748747587204,
+    "file": "qualitative/center_triangle_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_gaussian_bilinear",
+    "difficulty": 0.17453032732009888,
+    "file": "qualitative/center_gaussian_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_gaussian_bilinear",
+    "difficulty": 0.1593356430530548,
+    "file": "qualitative/center_gaussian_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_lanczos3_bilinear",
+    "difficulty": 0.1688319444656372,
+    "file": "qualitative/center_lanczos3_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "center_lanczos3_bilinear",
+    "difficulty": 0.15184445679187775,
+    "file": "qualitative/center_lanczos3_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_box_bilinear",
+    "difficulty": 0.16561251878738403,
+    "file": "qualitative/left_box_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_box_bilinear",
+    "difficulty": 0.15039722621440887,
+    "file": "qualitative/left_box_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_triangle_bilinear",
+    "difficulty": 0.1738206148147583,
+    "file": "qualitative/left_triangle_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_triangle_bilinear",
+    "difficulty": 0.1577390432357788,
+    "file": "qualitative/left_triangle_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_gaussian_bilinear",
+    "difficulty": 0.17364434897899628,
+    "file": "qualitative/left_gaussian_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_gaussian_bilinear",
+    "difficulty": 0.15833741426467896,
+    "file": "qualitative/left_gaussian_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_lanczos3_bilinear",
+    "difficulty": 0.16764603555202484,
+    "file": "qualitative/left_lanczos3_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "left_lanczos3_bilinear",
+    "difficulty": 0.15066538751125336,
+    "file": "qualitative/left_lanczos3_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_box_bilinear",
+    "difficulty": 0.15675179660320282,
+    "file": "qualitative/cosited_box_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_box_bilinear",
+    "difficulty": 0.14225441217422485,
+    "file": "qualitative/cosited_box_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_triangle_bilinear",
+    "difficulty": 0.17019540071487427,
+    "file": "qualitative/cosited_triangle_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_triangle_bilinear",
+    "difficulty": 0.15230876207351685,
+    "file": "qualitative/cosited_triangle_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_gaussian_bilinear",
+    "difficulty": 0.1726067066192627,
+    "file": "qualitative/cosited_gaussian_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_gaussian_bilinear",
+    "difficulty": 0.15512797236442566,
+    "file": "qualitative/cosited_gaussian_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_lanczos3_bilinear",
+    "difficulty": 0.16604161262512207,
+    "file": "qualitative/cosited_lanczos3_bilinear_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "cosited_lanczos3_bilinear",
+    "difficulty": 0.14712835848331451,
+    "file": "qualitative/cosited_lanczos3_bilinear_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q30",
+    "difficulty": 0.17758896946907043,
+    "file": "qualitative/jpeg420_q30_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q30",
+    "difficulty": 0.17021553218364716,
+    "file": "qualitative/jpeg420_q30_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q50",
+    "difficulty": 0.17270508408546448,
+    "file": "qualitative/jpeg420_q50_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q50",
+    "difficulty": 0.1607281118631363,
+    "file": "qualitative/jpeg420_q50_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q70",
+    "difficulty": 0.16893012821674347,
+    "file": "qualitative/jpeg420_q70_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q70",
+    "difficulty": 0.15544021129608154,
+    "file": "qualitative/jpeg420_q70_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  },
+  {
+    "boundary_center": {
+      "column": 57,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q90",
+    "difficulty": 0.16792728006839752,
+    "file": "qualitative/jpeg420_q90_01_test_fixture_10.png",
+    "image_id": "test/fixture_10",
+    "rank": 1
+  },
+  {
+    "boundary_center": {
+      "column": 48,
+      "row": 0
+    },
+    "crop": {
+      "height": 32,
+      "left": 32,
+      "top": 0,
+      "width": 32
+    },
+    "degradation_id": "jpeg420_q90",
+    "difficulty": 0.1529511958360672,
+    "file": "qualitative/jpeg420_q90_02_test_fixture_11.png",
+    "image_id": "test/fixture_11",
+    "rank": 2
+  }
+]
