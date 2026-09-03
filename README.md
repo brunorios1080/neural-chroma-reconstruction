@@ -13,11 +13,110 @@ model.
 | --- | ---: | --- | --- |
 | V5 | 1,925,667 generator + 694,241 discriminator | U-Net and PatchGAN that reconstruct full YCrCb | adversarial loss + 10x full-image L1 |
 | V6 | 593,794 | eight-block residual CNN that passes Y through unchanged and predicts Cr/Cb corrections | chroma-only L1 |
+| V7 | 595,525 | V6 trunk with residual polar magnitude/circular phase mean and separate uncertainty maps | Cartesian L1 + Laplace magnitude NLL + magnitude-weighted von Mises phase NLL |
 
 V5 is the perceptual/hallucination experiment. Because it regenerates all three
 channels and uses an adversarial objective, it can trade pixel accuracy for
 plausible detail. V6 is the conservative refiner and is the recommended baseline
 for objective fidelity.
+
+### V7: probabilistic polar chroma reconstruction
+
+V7 is an additional experiment; it does not replace V6. V6 predicts a
+deterministic Cartesian residual, `C_hat = C_bilinear + R(X)`. V7 keeps V6's
+3-to-64 stem and eight residual blocks, but changes the output parameterization.
+For repository-ordered chroma `[Cr, Cb]` and explicit neutral point `c0`,
+
+```text
+u = Cr - c0                     v = Cb - c0
+A = sqrt(u^2 + v^2)             phi = atan2(v, u)
+Cr = c0 + A cos(phi)             Cb = c0 + A sin(phi)
+```
+
+Its five-map head predicts an amplitude residual, a normalized cosine/sine phase
+residual, a Laplace amplitude scale `b_A`, and a von Mises phase concentration
+`kappa`. The supervised objective is
+
+```text
+L = lambda_cart L1(C_hat, C)
+  + lambda_amp [|A-A_hat|/b_A + log(2 b_A)]
+  + lambda_phase w_phi [-kappa cos(phi-phi_hat) + log(2 pi I0(kappa))]
+  + lambda_forward L1(D(C_hat), C_low),
+
+w_phi = clamp(A / phase_reference_amplitude, 0, 1).
+```
+
+The forward term is optional and uses the observation's exact siting and
+prefilter. V7 also exposes 50/80/90/95% amplitude intervals, kappa, circular
+variance, approximate circular von Mises interval half-widths, and two inference
+modes: `mean`, and `safe`, which continuously backs residuals toward bilinear
+according to configured uncertainty-to-confidence functions. Safe gating is
+inference-only and cannot suppress training residuals.
+
+The publication pipeline uses analytical full-range BT.601 with `c0=0.5`.
+Legacy OpenCV tensors instead use the uint8 neutral code `128/255`; V7 records and
+strictly validates this setting in checkpoints rather than guessing it. See
+[`docs/v7_design.md`](docs/v7_design.md) for the full repository audit and
+numerical policy.
+
+Supervised training (not run automatically):
+
+```bash
+python scripts/train_v7.py --config research/configs/v7.json
+```
+
+Run the controlled polar deterministic / probabilistic / forward matrix:
+
+```bash
+python scripts/run_v7_ablations.py --config research/configs/v7_ablations.json
+```
+
+Evaluate V7 mean and safe outputs, render uncertainty maps, and write
+`per_image.jsonl`, pixel `.npz` maps, interval coverage, uncertainty/error
+correlations, and risk-coverage curves:
+
+```bash
+python scripts/evaluate_v7.py --config research/configs/v7_evaluation.json
+```
+
+To add the two modes to the existing full publication benchmark without
+removing any existing baseline, append these entries to a copy of its
+`learned_methods` list:
+
+```json
+[
+  {"name":"v7_mean","type":"v7","mode":"mean","weights":"research/checkpoints/v7/v7_probabilistic/best.pth"},
+  {"name":"v7_safe","type":"v7","mode":"safe","weights":"research/checkpoints/v7/v7_probabilistic/best.pth"}
+]
+```
+
+The optional EMA teacher/student stage is disabled in its checked-in config and
+must be explicitly enabled. Thresholds are starting hypotheses, not tuned
+optima:
+
+```bash
+python scripts/build_research_manifest.py \
+  --dataset-root data/unlabeled \
+  --unlabeled data/unlabeled \
+  --output research/manifests/unlabeled.jsonl
+
+python scripts/self_train_v7.py \
+  --config research/configs/v7_self_train.json --enable
+```
+
+Software-only smoke and hard behavioral fixtures are separate from scientific
+evaluation:
+
+```bash
+python scripts/v7_smoke.py
+python scripts/v7_hypothesis_fixtures.py \
+  --weights research/checkpoints/v7/v7_probabilistic/best.pth \
+  --output research/reports/v7/hypothesis_fixtures.json
+```
+
+The fixture includes indistinguishable same-luma/different-chroma observations,
+neutral chroma, the ±pi hue boundary, and a sharp chroma edge. It validates
+software behavior only and cannot establish recovery or calibration.
 
 Print the model sizes with:
 
@@ -73,7 +172,7 @@ python scripts/prepare_dataset.py \
 
 ## Train
 
-Both versions use the same deterministic split, validation loop, sample writer,
+The V5 and V6 legacy entry points use the same deterministic split, validation loop, sample writer,
 history log, and resumable checkpoint format.
 
 ```bash

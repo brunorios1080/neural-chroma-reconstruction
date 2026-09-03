@@ -23,6 +23,7 @@ from .research_baselines import (
     load_ablation_predictor,
     load_legacy_predictor,
     load_torchscript_predictor,
+    load_v7_predictor,
 )
 from .research_codecs import ffmpeg_capabilities, jpeg_roundtrip, video_roundtrip
 from .research_data import (
@@ -291,6 +292,10 @@ def load_learned_methods(
             model, predictor, metadata = load_ablation_predictor(weights, device)
         elif method_type == "torchscript":
             model, predictor, metadata = load_torchscript_predictor(weights, device)
+        elif method_type == "v7":
+            model, predictor, metadata = load_v7_predictor(
+                weights, device, str(configuration.get("mode", "mean"))
+            )
         else:
             raise ValueError(f"Unknown learned method type: {method_type}")
         metadata["weights"] = str(configuration["weights"])

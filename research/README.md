@@ -27,6 +27,13 @@ lossless training/test corpus, so generating a large numerical result without a
 new local dataset would fabricate evidence. Tests generate small lossless images
 only to verify the protocol machinery.
 
+V7 uses the same manifest, degradation definitions, and reconstruction metrics.
+Its configs are `v7.json`, `v7_ablations.json`, `v7_evaluation.json`, and the
+disabled-by-default `v7_self_train.json`. The dedicated evaluator adds
+uncertainty maps, interval coverage, correlations, and risk-coverage curves;
+the common benchmark also accepts learned-method entries with `"type": "v7"`
+and a `"mode"` of `"mean"` or `"safe"`.
+
 The committed procedural audit can be regenerated without network access:
 
 ```bash

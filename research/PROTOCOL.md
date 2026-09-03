@@ -52,6 +52,29 @@ optimizer, seed, and checkpoint-selection rule as the V6-style base model.
 All ablations use the same manifest, crops, degradation schedule, optimizer,
 seed, and validation selection rule.
 
+V7 extends this protocol without changing the V6 matrix. Its controlled first
+milestone compares the unchanged V6 Cartesian model, V7 polar deterministic,
+and V7 probabilistic models at width 64/depth 8. A separately reported
+`v7_safe` row reuses the probabilistic checkpoint with inference-time gating;
+the forward-consistency variant changes only its configured loss. V7 checkpoints
+are selected on validation Cartesian chroma L1, never on the scientific test
+split. Existing classical, V5/V6, TabPFN (where separately run), SRCNN, and
+NAF-style controls must remain in the benchmark configuration.
+
+V7 uncertainty reporting includes raw error/scale/kappa/confidence pixel maps,
+amplitude interval coverage and width, magnitude-weighted circular phase error,
+uncertainty/error Spearman correlation, and confidence risk-coverage at
+10/25/50/75/100%. Correlation is evidence of ranking association only; neither
+correlation nor nominal likelihood output is called calibration. Approximate
+von Mises interval widths are identified as numerical CDF approximations.
+
+Optional self-training is a distinct second-stage experiment. Its unlabeled
+manifest is hash-checked against the held-out test split. The stage retains its
+initial teacher, logs acceptance/confidence/disagreement, enforces supervised
+examples in every update, caps the pseudo-loss weight, and requires uncertainty,
+phase-concentration, forward-consistency, and center-siting-safe augmentation
+consistency checks. It never overwrites the supervised checkpoint.
+
 ## Outputs
 
 The benchmark writes:

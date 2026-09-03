@@ -1,0 +1,36 @@
+{
+  "teacher_checkpoint": "research/checkpoints/v7/v7_probabilistic/best.pth",
+  "supervised_manifest": "research/manifests/lossless_full.jsonl",
+  "supervised_dataset_root": "data/research_lossless",
+  "unlabeled_manifest": "research/manifests/unlabeled.jsonl",
+  "unlabeled_dataset_root": "data/unlabeled",
+  "unlabeled_split": "unlabeled",
+  "output_dir": "research/checkpoints/v7/self_train",
+  "crop_size": 256,
+  "degradations": [
+    {"name": "center_box_bilinear", "siting": "center", "downsample_filter": "box", "upsample_filter": "bilinear"},
+    {"name": "center_triangle_bilinear", "siting": "center", "downsample_filter": "triangle", "upsample_filter": "bilinear"},
+    {"name": "center_gaussian_bilinear", "siting": "center", "downsample_filter": "gaussian", "upsample_filter": "bilinear"},
+    {"name": "center_lanczos3_bilinear", "siting": "center", "downsample_filter": "lanczos3", "upsample_filter": "bilinear"}
+  ],
+  "self_training": {
+    "enabled": false,
+    "epochs": 5,
+    "batch_size": 8,
+    "workers": 4,
+    "learning_rate": 5e-5,
+    "weight_decay": 1e-4,
+    "ema_alpha": 0.995,
+    "minimum_supervised_ratio": 0.5,
+    "maximum_pseudo_loss_weight": 0.25,
+    "amplitude_scale_max": 0.03,
+    "phase_kappa_min": 3.0,
+    "forward_error_max": 0.02,
+    "augmentation_error_max": 0.02,
+    "minimum_acceptance_confidence": 0.25,
+    "require_augmentation_consistency": true,
+    "gradient_clip_norm": 1.0,
+    "seed": 2027,
+    "device": "auto"
+  }
+}

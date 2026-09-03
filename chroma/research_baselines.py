@@ -15,6 +15,7 @@ from .checkpoints import load_model
 from .models import build_model
 from .research_data import SITING_OFFSETS, downsample_chroma, upsample_chroma
 from .research_models import load_ablation_checkpoint
+from .v7 import load_v7_checkpoint
 
 CLASSICAL_METHODS = (
     "nearest",
@@ -183,6 +184,33 @@ def load_ablation_predictor(
         "family": "ablation",
         "weights": str(weights),
         "config": checkpoint["config"],
+        "epoch": checkpoint.get("epoch"),
+    }
+
+
+def load_v7_predictor(
+    weights: str | Path,
+    device: torch.device,
+    mode: str = "mean",
+) -> tuple[nn.Module, Callable[[np.ndarray], np.ndarray], dict[str, Any]]:
+    """Load a strict V7 checkpoint for the common publication benchmark."""
+    if mode not in {"mean", "safe"}:
+        raise ValueError("V7 benchmark mode must be 'mean' or 'safe'")
+    model, checkpoint = load_v7_checkpoint(weights, device)
+    model.eval()
+
+    def predictor(image: np.ndarray) -> np.ndarray:
+        tensor = to_tensor(image, device)
+        with torch.inference_mode():
+            output = model(tensor).ycrcb(mode)[0]
+        return output.detach().float().cpu().permute(1, 2, 0).numpy()
+
+    return model, predictor, {
+        "family": "v7",
+        "mode": mode,
+        "weights": str(weights),
+        "architecture": checkpoint["architecture"],
+        "loss": checkpoint["loss"],
         "epoch": checkpoint.get("epoch"),
     }
 

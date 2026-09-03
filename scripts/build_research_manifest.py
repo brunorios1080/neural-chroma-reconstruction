@@ -17,9 +17,14 @@ from chroma.research_data import build_manifest, verify_manifest
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--train", type=Path, required=True)
+    parser.add_argument("--train", type=Path)
     parser.add_argument("--validation", type=Path)
-    parser.add_argument("--test", type=Path, required=True)
+    parser.add_argument("--test", type=Path)
+    parser.add_argument(
+        "--unlabeled",
+        type=Path,
+        help="Optional unlabeled-only split for V7 self-training manifests",
+    )
     parser.add_argument("--dataset-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
@@ -32,9 +37,17 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    splits = {"train": args.train, "test": args.test}
+    if args.unlabeled is None and (args.train is None or args.test is None):
+        raise ValueError("Supervised manifests require both --train and --test")
+    splits = {}
+    if args.train is not None:
+        splits["train"] = args.train
+    if args.test is not None:
+        splits["test"] = args.test
     if args.validation is not None:
         splits["validation"] = args.validation
+    if args.unlabeled is not None:
+        splits["unlabeled"] = args.unlabeled
     records = build_manifest(
         splits,
         args.output,
