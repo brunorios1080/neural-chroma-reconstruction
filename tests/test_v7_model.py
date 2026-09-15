@@ -15,10 +15,24 @@ from chroma.v7 import (
     parameter_count,
     save_v7_checkpoint,
 )
-from chroma.v7_training import train_v7
+from chroma.v7_training import _psnr_ssim, _ycrcb_to_rgb_tensor, train_v7
 
 
 class V7ModelTests(unittest.TestCase):
+    def test_validation_psnr_ssim_metrics(self) -> None:
+        reference = torch.rand(2, 2, 16, 16)
+        identical_psnr, identical_ssim = _psnr_ssim(reference, reference)
+        degraded = (reference + 0.05).clamp(0.0, 1.0)
+        degraded_psnr, degraded_ssim = _psnr_ssim(reference, degraded)
+        torch.testing.assert_close(identical_psnr, torch.full((2,), 80.0))
+        torch.testing.assert_close(identical_ssim, torch.ones(2), atol=1e-5, rtol=1e-5)
+        self.assertTrue(torch.all(degraded_psnr < identical_psnr))
+        self.assertTrue(torch.all(degraded_ssim < identical_ssim))
+
+        neutral = torch.full((1, 3, 8, 8), 0.5)
+        rgb = _ycrcb_to_rgb_tensor(neutral)
+        torch.testing.assert_close(rgb, neutral)
+
     def test_ablation_matrix_contains_matched_v6_and_all_v7_stages(self) -> None:
         project = Path(__file__).resolve().parents[1]
         v6 = json.loads((project / "research/configs/ablations.json").read_text())

@@ -1,0 +1,12 @@
+{
+  "extends": "prism_coco.json",
+  "output_dir": "runs/prism_gpu_smoke",
+  "max_images": 100,
+  "loss": {
+    "uncertainty_warmup_epochs": 0,
+    "uncertainty_ramp_epochs": 1,
+    "adversarial_warmup_epochs": 0,
+    "adversarial_ramp_epochs": 1
+  },
+  "training": {"epochs": 2, "device": "cuda"}
+}

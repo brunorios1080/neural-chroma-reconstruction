@@ -1,0 +1,48 @@
+{
+  "manifest": "research/manifests/lossless_full.jsonl",
+  "dataset_root": "data/research_lossless",
+  "output_dir": "runs/prism_lossless",
+  "data_kind": "lossless",
+  "model": {"backbone": "residual", "representation": "cartesian", "width": 64, "depth": 8},
+  "loss": {
+    "reconstruction": "l1", "edge_weight": 0.0, "forward_weight": 0.0,
+    "amplitude_weight": 0.01, "phase_weight": 0.005,
+    "uncertainty_warmup_epochs": 5, "uncertainty_ramp_epochs": 10,
+    "adversarial_weight": 0.0, "adversarial_warmup_epochs": 5, "adversarial_ramp_epochs": 5
+  },
+  "training": {
+    "epochs": 100, "batch_size": 16, "crop_size": 256, "workers": 8,
+    "persistent_workers": true, "seed": 2026, "device": "auto",
+    "learning_rate": 0.0001, "min_learning_rate": 0.000001, "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0, "augment": true, "allow_tf32": true,
+    "verify_hashes": true, "validation_all_degradations": false
+  },
+  "degradations": [
+    {"name": "center_box", "siting": "center", "downsample_filter": "box", "upsample_filter": "bilinear"},
+    {"name": "center_triangle", "siting": "center", "downsample_filter": "triangle", "upsample_filter": "bilinear"},
+    {"name": "center_gaussian", "siting": "center", "downsample_filter": "gaussian", "upsample_filter": "bilinear"},
+    {"name": "center_lanczos3", "siting": "center", "downsample_filter": "lanczos3", "upsample_filter": "bilinear"},
+    {"name": "left_box", "siting": "left", "downsample_filter": "box", "upsample_filter": "bilinear"},
+    {"name": "left_triangle", "siting": "left", "downsample_filter": "triangle", "upsample_filter": "bilinear"},
+    {"name": "left_gaussian", "siting": "left", "downsample_filter": "gaussian", "upsample_filter": "bilinear"},
+    {"name": "left_lanczos3", "siting": "left", "downsample_filter": "lanczos3", "upsample_filter": "bilinear"},
+    {"name": "cosited_box", "siting": "cosited", "downsample_filter": "box", "upsample_filter": "bilinear"},
+    {"name": "cosited_triangle", "siting": "cosited", "downsample_filter": "triangle", "upsample_filter": "bilinear"},
+    {"name": "cosited_gaussian", "siting": "cosited", "downsample_filter": "gaussian", "upsample_filter": "bilinear"},
+    {"name": "cosited_lanczos3", "siting": "cosited", "downsample_filter": "lanczos3", "upsample_filter": "bilinear"}
+  ],
+  "experiments": [
+    {"name": "prism_residual", "description": "Zero-initialized Cartesian residual baseline descended from V6"},
+    {"name": "prism_mse", "description": "Residual baseline with MSE reconstruction", "loss": {"reconstruction": "mse"}},
+    {"name": "prism_edge", "description": "Residual baseline with chroma-gradient supervision", "loss": {"edge_weight": 0.2}},
+    {"name": "prism_naf", "description": "NAF-style chroma-only restoration baseline", "model": {"backbone": "naf"}},
+    {"name": "prism_polar", "description": "Deterministic smooth-radius polar reconstruction", "model": {"representation": "polar"}},
+    {"name": "prism_polar_prob", "description": "Polar reconstruction with ramped joint uncertainty learning", "model": {"representation": "polar", "uncertainty": true}},
+    {"name": "prism_cartesian_prob", "description": "Cartesian reconstruction with detached polar uncertainty heads", "model": {"uncertainty": true, "detached_uncertainty": true}},
+    {"name": "prism_conditioned", "description": "Cartesian model supplied with known siting/filter metadata", "model": {"conditioned": true}},
+    {"name": "prism_forward", "description": "Cartesian baseline plus measurement consistency", "loss": {"forward_weight": 0.1}},
+    {"name": "prism_polar_forward", "description": "Probabilistic polar model plus measurement consistency", "model": {"representation": "polar", "uncertainty": true}, "loss": {"forward_weight": 0.1}},
+    {"name": "prism_unet", "description": "Chroma-residual U-Net retaining the input luminance", "model": {"backbone": "unet", "width": 32}},
+    {"name": "prism_gan", "description": "Same U-Net with a weak, ramped conditional adversarial loss", "model": {"backbone": "unet", "width": 32}, "loss": {"adversarial_weight": 0.001}}
+  ]
+}

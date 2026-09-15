@@ -1,0 +1,7 @@
+{
+  "extends": "prism_coco.json",
+  "manifest": "research/manifests/prism_coco_test2014.jsonl",
+  "dataset_root": "data/raw/coco",
+  "output_dir": "runs/prism_coco_test2014",
+  "evaluation": {"baselines": ["bilinear"]}
+}

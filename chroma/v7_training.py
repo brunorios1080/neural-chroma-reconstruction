@@ -13,6 +13,7 @@ from typing import Any
 
 import numpy as np
 import torch
+import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
 
 from .research_data import (
@@ -112,6 +113,72 @@ class V7ManifestCropDataset(Dataset):
         )
 
 
+def _ycrcb_to_rgb_tensor(ycrcb: torch.Tensor) -> torch.Tensor:
+    """Convert full-range BT.601 Y, Cr, Cb BCHW tensors to clipped RGB."""
+    luma = ycrcb[:, 0:1]
+    cr = ycrcb[:, 1:2] - 0.5
+    cb = ycrcb[:, 2:3] - 0.5
+    return torch.cat(
+        (
+            luma + 1.403 * cr,
+            luma - 0.714 * cr - 0.344 * cb,
+            luma + 1.773 * cb,
+        ),
+        dim=1,
+    ).clamp(0.0, 1.0)
+
+
+def _psnr_ssim(
+    reference: torch.Tensor, candidate: torch.Tensor
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Return per-image PSNR and standard Gaussian-window SSIM."""
+    if reference.shape != candidate.shape or reference.ndim != 4:
+        raise ValueError("PSNR/SSIM inputs must be matching BCHW tensors")
+    squared_error = (reference - candidate).square().flatten(1).mean(1)
+    psnr = (10.0 * torch.log10(1.0 / squared_error.clamp_min(1e-8))).clamp_max(
+        80.0
+    )
+
+    height, width = reference.shape[-2:]
+    window_size = min(
+        11,
+        height if height % 2 else height - 1,
+        width if width % 2 else width - 1,
+    )
+    window_size = max(3, window_size)
+    sigma = 1.5 * window_size / 11.0
+    coordinates = torch.arange(
+        window_size, device=reference.device, dtype=reference.dtype
+    )
+    coordinates = coordinates - (window_size - 1) / 2.0
+    kernel_1d = torch.exp(-(coordinates.square()) / (2.0 * sigma**2))
+    kernel_1d = kernel_1d / kernel_1d.sum()
+    kernel_2d = torch.outer(kernel_1d, kernel_1d)
+    channels = reference.shape[1]
+    kernel = kernel_2d.expand(channels, 1, window_size, window_size)
+    padding = window_size // 2
+
+    def blur(value: torch.Tensor) -> torch.Tensor:
+        padded = F.pad(value, (padding,) * 4, mode="reflect")
+        return F.conv2d(padded, kernel, groups=channels)
+
+    mu_reference = blur(reference)
+    mu_candidate = blur(candidate)
+    mu_reference_sq = mu_reference.square()
+    mu_candidate_sq = mu_candidate.square()
+    mu_product = mu_reference * mu_candidate
+    variance_reference = blur(reference.square()) - mu_reference_sq
+    variance_candidate = blur(candidate.square()) - mu_candidate_sq
+    covariance = blur(reference * candidate) - mu_product
+    c1, c2 = 0.01**2, 0.03**2
+    numerator = (2.0 * mu_product + c1) * (2.0 * covariance + c2)
+    denominator = (mu_reference_sq + mu_candidate_sq + c1) * (
+        variance_reference + variance_candidate + c2
+    )
+    ssim = (numerator / denominator.clamp_min(torch.finfo(reference.dtype).eps))
+    return psnr, ssim.flatten(1).mean(1)
+
+
 @torch.no_grad()
 def validate_v7(
     model: V7PolarChromaRefiner,
@@ -119,15 +186,19 @@ def validate_v7(
     degradations: Sequence[DegradationSpec],
     loss_config: V7LossConfig,
     device: torch.device,
+    non_blocking: bool = False,
 ) -> dict[str, float]:
     model.eval()
     totals: dict[str, float] = {}
     samples = 0
     for inputs, targets, low, spec_indices, _ in loader:
-        inputs, targets, low = inputs.to(device), targets.to(device), low.to(device)
+        inputs = inputs.to(device, non_blocking=non_blocking)
+        targets = targets.to(device, non_blocking=non_blocking)
+        low = low.to(device, non_blocking=non_blocking)
         specs = [degradations[int(index)] for index in spec_indices]
+        prediction = model(inputs)
         _, components = v7_supervised_loss(
-            model(inputs),
+            prediction,
             targets,
             model.config.neutral_chroma,
             loss_config,
@@ -137,6 +208,21 @@ def validate_v7(
         count = inputs.shape[0]
         for name, value in components.items():
             totals[name] = totals.get(name, 0.0) + float(value) * count
+        target_rgb = _ycrcb_to_rgb_tensor(targets)
+        predicted_ycrcb = prediction.ycrcb("mean")
+        predicted_rgb = _ycrcb_to_rgb_tensor(predicted_ycrcb)
+        chroma_psnr, chroma_ssim = _psnr_ssim(
+            targets[:, 1:3], prediction.chroma_mean
+        )
+        rgb_psnr, rgb_ssim = _psnr_ssim(target_rgb, predicted_rgb)
+        totals["chroma_psnr"] = totals.get("chroma_psnr", 0.0) + float(
+            chroma_psnr.sum()
+        )
+        totals["chroma_ssim"] = totals.get("chroma_ssim", 0.0) + float(
+            chroma_ssim.sum()
+        )
+        totals["rgb_psnr"] = totals.get("rgb_psnr", 0.0) + float(rgb_psnr.sum())
+        totals["rgb_ssim"] = totals.get("rgb_ssim", 0.0) + float(rgb_ssim.sum())
         samples += count
     if samples == 0:
         raise RuntimeError("V7 validation produced no samples")
@@ -157,10 +243,11 @@ def train_v7(
     from .research_data import load_manifest
 
     records = load_manifest(manifest_path)
-    verification = verify_manifest(records, dataset_root)
-    if not verification["ok"]:
-        raise RuntimeError(f"Manifest verification failed: {verification}")
     training = dict(configuration.get("training", {}))
+    if bool(training.get("verify_manifest", True)):
+        verification = verify_manifest(records, dataset_root)
+        if not verification["ok"]:
+            raise RuntimeError(f"Manifest verification failed: {verification}")
     seed = int(training.get("seed", 2026))
     _seed_everything(seed)
     model_config = V7Config(**dict(configuration.get("model", {})))
@@ -183,17 +270,30 @@ def train_v7(
     validation_dataset = V7ManifestCropDataset(
         validation_records, dataset_root, crop_size, degradations, seed, False
     )
+    device = resolve_device(str(training.get("device", "auto")))
+    pin_memory = bool(training.get("pin_memory", device.type == "cuda"))
+    workers = int(training.get("workers", 0))
     generator = torch.Generator().manual_seed(seed)
     loader_options = {
         "batch_size": int(training.get("batch_size", 16)),
-        "num_workers": int(training.get("workers", 0)),
+        "num_workers": workers,
+        "pin_memory": pin_memory,
     }
+    if workers > 0:
+        loader_options["persistent_workers"] = bool(
+            training.get("persistent_workers", True)
+        )
+        loader_options["prefetch_factor"] = int(training.get("prefetch_factor", 2))
     train_loader = DataLoader(
         train_dataset, shuffle=True, generator=generator, **loader_options
     )
     validation_loader = DataLoader(validation_dataset, shuffle=False, **loader_options)
-    device = resolve_device(str(training.get("device", "auto")))
     amp = bool(training.get("amp", True) and device.type == "cuda")
+    if device.type == "cuda":
+        allow_tf32 = bool(training.get("allow_tf32", True))
+        torch.backends.cuda.matmul.allow_tf32 = allow_tf32
+        torch.backends.cudnn.allow_tf32 = allow_tf32
+        torch.backends.cudnn.benchmark = bool(training.get("cudnn_benchmark", True))
     model = V7PolarChromaRefiner(model_config).to(device)
     start_epoch = 1
     best = float("inf")
@@ -229,7 +329,9 @@ def train_v7(
         totals: dict[str, float] = {}
         samples = 0
         for inputs, targets, low, spec_indices, _ in train_loader:
-            inputs, targets, low = inputs.to(device), targets.to(device), low.to(device)
+            inputs = inputs.to(device, non_blocking=pin_memory)
+            targets = targets.to(device, non_blocking=pin_memory)
+            low = low.to(device, non_blocking=pin_memory)
             specs = [degradations[int(index)] for index in spec_indices]
             with _autocast(device, amp):
                 loss, components = v7_supervised_loss(
@@ -256,7 +358,12 @@ def train_v7(
             name: value / max(1, samples) for name, value in totals.items()
         }
         validation_metrics = validate_v7(
-            model, validation_loader, degradations, loss_config, device
+            model,
+            validation_loader,
+            degradations,
+            loss_config,
+            device,
+            non_blocking=pin_memory,
         )
         record = {
             "epoch": epoch,
@@ -273,6 +380,7 @@ def train_v7(
             "degradations": [asdict(spec) for spec in degradations],
             "manifest": str(configuration["manifest"]),
             "scaler": scaler.state_dict(),
+            "epoch_metrics": record,
         }
         save_v7_checkpoint(
             output_dir / "last.pth",
@@ -298,7 +406,9 @@ def train_v7(
             )
         print(
             f"V7 epoch {epoch}/{epochs}: train={train_metrics['total']:.6f} "
-            f"validation_cart={score:.6f}"
+            f"validation_cart={score:.6f} "
+            f"chroma_psnr={validation_metrics['chroma_psnr']:.2f}dB "
+            f"chroma_ssim={validation_metrics['chroma_ssim']:.4f}"
         )
     return {
         "output_dir": str(output_dir),

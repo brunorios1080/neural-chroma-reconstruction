@@ -1,0 +1,9 @@
+{
+  "extends": "prism.json",
+  "manifest": "research/manifests/fixture.jsonl",
+  "dataset_root": "research/fixtures/lossless",
+  "output_dir": "runs/prism_smoke",
+  "model": {"width": 8, "depth": 1},
+  "loss": {"uncertainty_warmup_epochs": 0, "uncertainty_ramp_epochs": 1, "adversarial_warmup_epochs": 0, "adversarial_ramp_epochs": 1, "discriminator_width": 4},
+  "training": {"epochs": 2, "batch_size": 2, "crop_size": 32, "workers": 0, "device": "cpu", "max_train_batches": 1, "max_validation_batches": 1}
+}

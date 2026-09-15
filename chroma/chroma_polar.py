@@ -79,17 +79,33 @@ def maximum_amplitude_for_phase(
     phase: torch.Tensor, neutral_chroma: float, eps: float = 1e-8
 ) -> torch.Tensor:
     """Distance from the neutral point to the `[0,1]^2` boundary along phase."""
+    if not 0.0 <= neutral_chroma <= 1.0:
+        raise ValueError("neutral_chroma must be in [0, 1]")
+    if eps <= 0.0:
+        raise ValueError("eps must be positive")
     cosine = torch.cos(phase)
     sine = torch.sin(phase)
-    infinity = torch.full_like(phase, float("inf"))
+    # torch.where evaluates both branches. Dividing by the raw trigonometric
+    # values therefore creates infinities at cardinal phases even when that
+    # branch is not selected, and autograd can turn 0 * inf into NaN. Use safe
+    # denominators and a finite upper bound for inactive axes instead.
+    far_limit = torch.full_like(phase, math.sqrt(2.0))
     x_limit = torch.where(
         cosine > eps,
-        (1.0 - neutral_chroma) / cosine,
-        torch.where(cosine < -eps, -neutral_chroma / cosine, infinity),
+        (1.0 - neutral_chroma) / cosine.clamp_min(eps),
+        torch.where(
+            cosine < -eps,
+            -neutral_chroma / cosine.clamp_max(-eps),
+            far_limit,
+        ),
     )
     y_limit = torch.where(
         sine > eps,
-        (1.0 - neutral_chroma) / sine,
-        torch.where(sine < -eps, -neutral_chroma / sine, infinity),
+        (1.0 - neutral_chroma) / sine.clamp_min(eps),
+        torch.where(
+            sine < -eps,
+            -neutral_chroma / sine.clamp_max(-eps),
+            far_limit,
+        ),
     )
     return torch.minimum(x_limit, y_limit).clamp_min(0.0)

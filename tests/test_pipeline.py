@@ -13,7 +13,7 @@ from chroma.data import YUVChromaDataset, simulate_420, split_files
 from chroma.inference import predict
 from chroma.metrics import image_metrics
 from chroma.models import ChromaRefiner, Discriminator, UNetGenerator, parameter_count
-from chroma.training import TrainingConfig, run_training
+from chroma.training import TrainingConfig, _restore_training_state, run_training
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -42,6 +42,22 @@ class ModelTests(unittest.TestCase):
             with self.subTest(version=version):
                 checkpoint = load_model(model, path, version, "cpu")
                 self.assertGreaterEqual(int(checkpoint["epoch"]), 1)
+
+    def test_legacy_v5_checkpoint_resumes_at_epoch_11(self) -> None:
+        generator = UNetGenerator()
+        discriminator = Discriminator()
+        checkpoint = load_model(
+            generator, ROOT / "models/version5/epoch_010.pth", "v5", "cpu"
+        )
+        optimizers = {
+            "generator": torch.optim.Adam(generator.parameters(), lr=2e-4),
+            "discriminator": torch.optim.Adam(discriminator.parameters(), lr=2e-4),
+        }
+        start_epoch, best = _restore_training_state(
+            checkpoint, "v5", discriminator, optimizers
+        )
+        self.assertEqual(start_epoch, 11)
+        self.assertEqual(best, float("inf"))
 
     def test_new_checkpoint_round_trip(self) -> None:
         original = ChromaRefiner(features=8, num_blocks=1)
@@ -126,12 +142,19 @@ class TrainingIntegrationTests(unittest.TestCase):
                             seed=5,
                             device="cpu",
                             amp=False,
+                            max_images=3,
+                            run_name=f"{version}.test",
                         )
                     )
                     self.assertTrue((output_dir / "last.pth").is_file())
                     self.assertTrue((output_dir / "best.pth").is_file())
                     self.assertTrue((output_dir / "history.jsonl").is_file())
                     self.assertTrue((samples_dir / "epoch_001.png").is_file())
+                    payload = torch.load(
+                        output_dir / "last.pth", map_location="cpu", weights_only=True
+                    )
+                    self.assertEqual(payload["run_name"], f"{version}.test")
+                    self.assertEqual(payload["config"]["max_images"], 3)
 
 
 if __name__ == "__main__":

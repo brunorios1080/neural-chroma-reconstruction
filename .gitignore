@@ -11,3 +11,5 @@ runs/
 *.ipynb_checkpoints
 .pytest_cache/
 .coverage
+.cluster/
+slurm_logs/

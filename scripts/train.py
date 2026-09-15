@@ -33,6 +33,8 @@ def parse_args() -> argparse.Namespace:
         "--device", default="auto", help="auto, cpu, cuda, or a device such as cuda:1"
     )
     parser.add_argument("--resume", type=Path)
+    parser.add_argument("--max-images", type=int)
+    parser.add_argument("--run-name")
     parser.add_argument("--output-dir", "--out", dest="output_dir", type=Path)
     parser.add_argument("--samples-dir", "--samples", dest="samples_dir", type=Path)
     parser.add_argument(
@@ -61,6 +63,8 @@ def main() -> None:
             device=args.device,
             resume=args.resume,
             amp=not args.no_amp,
+            max_images=args.max_images,
+            run_name=args.run_name,
         )
     )
 

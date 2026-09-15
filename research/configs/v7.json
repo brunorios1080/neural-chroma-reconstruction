@@ -33,12 +33,17 @@
     "batch_size": 16,
     "epochs": 30,
     "workers": 4,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
     "learning_rate": 1e-4,
     "weight_decay": 1e-4,
     "gradient_clip_norm": 1.0,
     "seed": 2026,
     "device": "auto",
-    "amp": true
+    "amp": true,
+    "allow_tf32": true,
+    "cudnn_benchmark": true,
+    "verify_manifest": true
   },
   "degradations": [
     {"name": "center_box_bilinear", "siting": "center", "downsample_filter": "box", "upsample_filter": "bilinear"},

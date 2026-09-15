@@ -1,0 +1,58 @@
+{
+  "campaign": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/campaign.json",
+  "manifest": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_residual/manifest.jsonl",
+  "source": "/ocean/projects/cis260224p/shared/brios/data/coco/unlabeled2017.zip",
+  "training": {
+    "seed": 20260906,
+    "train_images": 256,
+    "validation_images": 64,
+    "crop_size": 128,
+    "epochs": 4,
+    "batch_size": 8,
+    "workers": 2,
+    "backbone_lr": 3e-05,
+    "gain_lr": 0.003
+  },
+  "cases": [
+    {
+      "name": "v6_conventional_bl",
+      "model": "v6",
+      "protocol": {
+        "transform": "conventional",
+        "sampling": "cosited_point",
+        "interpolation": "bilinear"
+      },
+      "flat_guard_radius": 2
+    },
+    {
+      "name": "v6_scaled_matrix_bl",
+      "model": "v6",
+      "protocol": {
+        "transform": "scaled_matrix",
+        "sampling": "cosited_point",
+        "interpolation": "bilinear"
+      },
+      "flat_guard_radius": 2
+    },
+    {
+      "name": "v6_decode_first_bc",
+      "model": "v6",
+      "protocol": {
+        "transform": "scaled_decode_first",
+        "sampling": "cosited_point",
+        "interpolation": "bicubic"
+      },
+      "flat_guard_radius": 2
+    },
+    {
+      "name": "prism_residual_decode_first_bc",
+      "model": "prism_residual",
+      "protocol": {
+        "transform": "scaled_decode_first",
+        "sampling": "cosited_point",
+        "interpolation": "bicubic"
+      },
+      "flat_guard_radius": 2
+    }
+  ]
+}

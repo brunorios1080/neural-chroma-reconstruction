@@ -44,6 +44,8 @@ class TrainingConfig:
     device: str = "auto"
     resume: Path | None = None
     amp: bool = True
+    max_images: int | None = None
+    run_name: str | None = None
 
 
 def resolve_device(requested: str) -> torch.device:
@@ -305,6 +307,10 @@ def run_training(config: TrainingConfig) -> None:
     device = resolve_device(config.device)
     amp = bool(config.amp and device.type == "cuda")
     files = list_image_files(config.source)
+    if config.max_images is not None:
+        if config.max_images < 2:
+            raise ValueError("max_images must be at least 2")
+        files = files[: config.max_images]
     train_files, val_files = split_files(files, config.val_fraction, config.seed)
     train_dataset = YUVChromaDataset(train_files, config.crop_size, random_crop=True)
     val_dataset = YUVChromaDataset(val_files, config.crop_size, random_crop=False)
@@ -359,7 +365,8 @@ def run_training(config: TrainingConfig) -> None:
     config.output_dir.mkdir(parents=True, exist_ok=True)
     config.samples_dir.mkdir(parents=True, exist_ok=True)
     print(
-        f"Model: {version.upper()} | Parameters: {parameter_count(unwrap(model)):,} | "
+        f"Run: {config.run_name or version} | Model: {version.upper()} | "
+        f"Parameters: {parameter_count(unwrap(model)):,} | "
         f"Device: {device} | Train: {len(train_files)} | Validation: {len(val_files)}"
     )
 
@@ -397,6 +404,7 @@ def run_training(config: TrainingConfig) -> None:
         payload = {
             "format_version": 1,
             "model_version": version,
+            "run_name": config.run_name or version,
             "epoch": epoch,
             "model": unwrap(model).state_dict(),
             "discriminator": unwrap(discriminator).state_dict()

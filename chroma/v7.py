@@ -250,7 +250,9 @@ def save_v7_checkpoint(
         payload.update(dict(extra))
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    torch.save(payload, destination)
+    temporary = destination.with_name(f".{destination.name}.tmp")
+    torch.save(payload, temporary)
+    temporary.replace(destination)
 
 
 def load_v7_checkpoint(

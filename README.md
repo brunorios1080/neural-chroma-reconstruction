@@ -9,6 +9,12 @@ model.
 
 ## Models
 
+The new **Prism** family provides twelve independently named, matched training
+experiments derived from the model review, including residual/NAF baselines,
+polar and Cartesian uncertainty variants, degradation conditioning, measurement
+consistency, and chroma-only U-Nets. See [Prism training and evaluation](docs/prism_training.md)
+for the model map, smoke checks, Bridges-2 submission, monitoring, and resume commands.
+
 | Model | Parameters | Design | Training objective |
 | --- | ---: | --- | --- |
 | V5 | 1,925,667 generator + 694,241 discriminator | U-Net and PatchGAN that reconstruct full YCrCb | adversarial loss + 10x full-image L1 |
@@ -64,6 +70,70 @@ Supervised training (not run automatically):
 ```bash
 python scripts/train_v7.py --config research/configs/v7.json
 ```
+
+### Bridges-2 cluster training
+
+The Bridges-2 launch path uses PSC's maintained PyTorch module, adds only
+headless OpenCV in a repository-local dependency directory, reads the packed COCO
+ZIP from `/ocean`, and extracts it only onto compute-node local storage. It does
+not create 123,403 JPEG files in `$HOME` or `/ocean`. Checkpoints and model outputs
+default to `/ocean/projects/cis260224p/shared/$USER/checkpoints/v7/`.
+
+Run setup once on the login node:
+
+```bash
+./scripts/bridges2/setup.sh
+```
+
+Before the first submission, put the packed archive and metadata in project storage:
+
+```text
+/ocean/projects/cis260224p/shared/$USER/data/coco/unlabeled2017.zip
+/ocean/projects/cis260224p/shared/$USER/data/coco/annotations/image_info_unlabeled2017.json
+```
+
+First submit a 100-image, one-epoch smoke run capped at 30 minutes:
+
+```bash
+NCR_MAX_IMAGES=100 NCR_EPOCHS=1 NCR_WALLTIME=00:30:00 \
+  ./scripts/bridges2/submit_v7.sh research/configs/v7_coco.json
+```
+
+After the smoke run succeeds, submit the full V7 run:
+
+```bash
+./scripts/bridges2/submit_v7.sh research/configs/v7_coco.json
+```
+
+The tracked COCO V7 configuration trains for 100 epochs with batch 64. Smoke checkpoints are
+automatically isolated in a `_smokeN` output directory. Production checkpoints
+are written after every epoch. A later submission automatically resumes from
+the output directory's `last.pth`; `NCR_RESUME` can select another checkpoint.
+
+The Bridges-2 COCO split uses 96% training and 4% validation. Finite-value checks
+remain enabled, and validation records Cartesian loss plus chroma/RGB PSNR and
+SSIM. Batch 64 has been verified on a 48 GB L40S.
+
+Submit multiple model configurations as independent one-GPU jobs by listing
+each config. Their output directories must be distinct:
+
+```bash
+./scripts/bridges2/submit_v7.sh \
+  research/configs/v7_coco.json \
+  path/to/second_v7_config.json
+```
+
+Defaults target one 48 GB L40S in the `GPU-shared` partition under allocation
+`cis260224p`. Override resource choices with `NCR_GPU`, `NCR_CPUS`,
+`NCR_MEMORY`, `NCR_WALLTIME`, `NCR_ACCOUNT`, or `NCR_PARTITION`. Training
+overrides include `NCR_BATCH_SIZE`, `NCR_EPOCHS`, `NCR_WORKERS`, and
+`NCR_RESUME`. `NCR_MAX_IMAGES` restricts the manifest for smoke testing;
+`NCR_OUTPUT_DIR`, `NCR_DATASET_ARCHIVE`, `NCR_COCO_METADATA`, and
+`NCR_PROJECT_ROOT` override the `/ocean` storage layout. Slurm logs are written
+under `slurm_logs/`.
+
+The COCO configuration is useful for synthetic-degradation training but is not
+a lossless publication dataset; keep those evidence tiers separate.
 
 Run the controlled polar deterministic / probabilistic / forward matrix:
 
@@ -212,6 +282,30 @@ Resume a current checkpoint with:
 The committed legacy checkpoints remain supported. Their weights can be used for
 inference and evaluation, but they lack optimizer state and therefore cannot
 resume exactly from the original training run.
+
+### V5.1 continuation on Bridges-2
+
+V5.1 preserves `models/version5/epoch_010.pth` and continues its generator and
+discriminator weights from epoch 11 through epoch 100. Because the historical
+checkpoint has no optimizer state, V5.1 recreates both documented Adam optimizers
+at `2e-4`; it is a weight continuation rather than an exact optimizer continuation.
+The cluster run uses batch 64 after H100 throughput benchmarks, while retaining
+the original architecture, crop, loss, learning rate, and full-precision arithmetic.
+New checkpoints are written separately under
+`/ocean/projects/cis260224p/shared/$USER/checkpoints/v5.1/`.
+
+Run a 100-image epoch-11 smoke continuation:
+
+```bash
+NCR_GPU=h100-80 NCR_MAX_IMAGES=100 NCR_EPOCHS=11 NCR_WALLTIME=00:30:00 \
+  ./scripts/bridges2/submit_v5_1.sh
+```
+
+Submit the full continuation through epoch 100:
+
+```bash
+./scripts/bridges2/submit_v5_1.sh
+```
 
 ## Inference
 

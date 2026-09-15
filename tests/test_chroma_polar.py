@@ -9,6 +9,7 @@ from chroma.chroma_polar import (
     PUBLICATION_NEUTRAL_CHROMA,
     cartesian_chroma_to_polar,
     circular_difference,
+    maximum_amplitude_for_phase,
     polar_chroma_to_cartesian,
     wrap_angle,
 )
@@ -72,6 +73,28 @@ class PolarConversionTests(unittest.TestCase):
             torch.tensor([-math.pi + 1e-4]), torch.tensor([math.pi - 1e-4])
         )
         self.assertAlmostEqual(float(difference), 2e-4, places=5)
+
+    def test_maximum_amplitude_cardinal_phases_have_finite_gradients(self) -> None:
+        phases = torch.tensor(
+            [
+                0.0,
+                math.pi / 2,
+                math.pi,
+                -math.pi / 2,
+                1e-10,
+                math.pi / 2 + 1e-10,
+            ],
+            dtype=torch.float64,
+            requires_grad=True,
+        )
+        limits = maximum_amplitude_for_phase(phases, self.neutral)
+        torch.testing.assert_close(
+            limits[:4], torch.full((4,), 0.5, dtype=torch.float64)
+        )
+        self.assertTrue(torch.isfinite(limits).all())
+        limits.sum().backward()
+        self.assertIsNotNone(phases.grad)
+        self.assertTrue(torch.isfinite(phases.grad).all())
 
 
 if __name__ == "__main__":

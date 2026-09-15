@@ -1,0 +1,7 @@
+{
+  "extends": "prism.json",
+  "manifest": "research/manifests/prism_coco.jsonl",
+  "dataset_root": "data/raw/coco",
+  "output_dir": "runs/prism_coco",
+  "data_kind": "synthetic_coco"
+}

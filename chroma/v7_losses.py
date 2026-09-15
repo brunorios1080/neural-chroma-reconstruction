@@ -166,12 +166,12 @@ def v7_supervised_loss(
         + config.lambda_forward * forward
     )
     components = {
-        "total": total,
         "cartesian_l1": cartesian,
         "amplitude_nll": amplitude,
         "phase_nll_weighted": phase,
         "forward_l1": forward,
         "phase_weight_mean": weights.mean(),
+        "total": total,
     }
     if config.debug_finite:
         for name, value in components.items():

@@ -71,4 +71,6 @@ def load_model(
 def save_checkpoint(path: str | Path, payload: dict[str, Any]) -> None:
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    torch.save(payload, destination)
+    temporary = destination.with_name(f".{destination.name}.tmp")
+    torch.save(payload, temporary)
+    temporary.replace(destination)
