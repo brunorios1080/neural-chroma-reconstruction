@@ -1,0 +1,131 @@
+{
+  "status": "complete",
+  "rows": 5040,
+  "unique_images": 264,
+  "completed": [
+    "groups/kodak",
+    "shards/0",
+    "shards/1",
+    "shards/2",
+    "shards/3",
+    "shards/4",
+    "shards/5",
+    "shards/6",
+    "shards/7",
+    "shards/8",
+    "shards/9",
+    "shards/10",
+    "shards/11",
+    "shards/12",
+    "shards/13",
+    "shards/14",
+    "shards/15"
+  ],
+  "pending": [],
+  "result_files": [
+    {
+      "path": "groups/kodak/rows.jsonl",
+      "sha256": "58820e99ff8bdf3056fd74631ae5c7f63c082ca875b229596987f15bddd2d11b",
+      "rows": 720
+    },
+    {
+      "path": "shards/0/rows.jsonl",
+      "sha256": "4c5f425df83d7f54f31d84d23e04935a5d2faa68354c822ca2fc637c705a9933",
+      "rows": 270
+    },
+    {
+      "path": "shards/1/rows.jsonl",
+      "sha256": "b887635894cbb4673fe96a740f4cc3a797e49f4747e4530b8d3d813d031dbfa9",
+      "rows": 270
+    },
+    {
+      "path": "shards/2/rows.jsonl",
+      "sha256": "ae2e6d5e636c815bcbc355a13f4388c3ffd9564341993dad7c646b0e94300ee8",
+      "rows": 270
+    },
+    {
+      "path": "shards/3/rows.jsonl",
+      "sha256": "c08e7df7a14e80ee9abcac3c7bbf5438cff14d4d2e68d71e35a525524b14334e",
+      "rows": 270
+    },
+    {
+      "path": "shards/4/rows.jsonl",
+      "sha256": "d39e595c5b0bfeaab97fdb6961ff4a059f8f81d384b0d38b6a7b2528e9e33aed",
+      "rows": 270
+    },
+    {
+      "path": "shards/5/rows.jsonl",
+      "sha256": "aad7e2f01711ed0edca775037be4c609e0d5d74321c743b58bc587c383eff606",
+      "rows": 270
+    },
+    {
+      "path": "shards/6/rows.jsonl",
+      "sha256": "64f19c535dd9e6edeb396d5e9fff1c51d6823b31bba2454a3d39697dd3b88f5d",
+      "rows": 270
+    },
+    {
+      "path": "shards/7/rows.jsonl",
+      "sha256": "4f43e8735286721a3c0a54a136ffa78703b6133ae84415068c1c2cf4de61c31d",
+      "rows": 270
+    },
+    {
+      "path": "shards/8/rows.jsonl",
+      "sha256": "e2644bc65f9c150a25795a53894429a6d4fdf70e03647d5dba20d74569754b9a",
+      "rows": 270
+    },
+    {
+      "path": "shards/9/rows.jsonl",
+      "sha256": "f92ebb3732576ae439d6d3811445bc499362599df24b8f07b4f45a8cbd49190d",
+      "rows": 270
+    },
+    {
+      "path": "shards/10/rows.jsonl",
+      "sha256": "e60b9d335efc1ec5942250b3702967374384cd056b62aab91d6397392a9706b0",
+      "rows": 270
+    },
+    {
+      "path": "shards/11/rows.jsonl",
+      "sha256": "b5ed1e430cd746810d21b9ec07dcd37ecba35ca0141f496fa7b3e0114748676f",
+      "rows": 270
+    },
+    {
+      "path": "shards/12/rows.jsonl",
+      "sha256": "a6cad1c984b1581b49dedc6cb3aa8ae8ef5d25e3a221d17d10d7c130d42330f9",
+      "rows": 270
+    },
+    {
+      "path": "shards/13/rows.jsonl",
+      "sha256": "9ef62ebc9a049a11541a5378c237eacbf1ff82ca6e0f4a25005b21d8d44b668f",
+      "rows": 270
+    },
+    {
+      "path": "shards/14/rows.jsonl",
+      "sha256": "645f6a0ab14ce63c084117615c4280e3440f1b7bd103aec5426d00aefbba5bf3",
+      "rows": 270
+    },
+    {
+      "path": "shards/15/rows.jsonl",
+      "sha256": "40b9e8fa71d074e678279ba5a828616998fe1190a13bd88463ef4c4bb99ef79e",
+      "rows": 270
+    }
+  ],
+  "checkpoint_hashes": {
+    "prism_residual": "6fb40abc01571088a59d113ac6d8393bbc0eebd6afca1ceceda2ef1fa3f29b09",
+    "prism_polar": "cd607d63d2583cf4e5906369e866d5a83c43c3f8402d938c97a5244518eac60a",
+    "prism_polar_prob": "868ae8c9cb6216218dd897eed7cdb49c2faba578173a474cd73ad38c686cf95a",
+    "prism_cartesian_prob": "d1d3d18289af3d0df5debce43b27497d7e0e2f46879b83606aa34587c629c063",
+    "v5": "42449757c0f4999a6131c48a566263e61f0c6cf4d75ef4b8a87cbc4a47fbf16d",
+    "v5_1": "a00ed5793a876003374142493287b8e28243256b5a36667de89f16c3aacbde23",
+    "v6": "fbf27827c76cfa3de4ee28f6e896509fe8bed54d3a84518ae5ee374ce104bf0a",
+    "v7": "c2b4d1c7c0485911a4a6aeb4a5d4e33533e0deb9e8680da078b0b5cde4ad5a0b"
+  },
+  "checks": [
+    "exact image/method coverage for each completed group",
+    "no duplicate image/method pairs",
+    "same ground-truth RGB hash across methods",
+    "same eight checkpoint hashes",
+    "consistent transform, model, and metric settings",
+    "six finite metrics per result"
+  ],
+  "exact_published_protocol_verified": false
+}

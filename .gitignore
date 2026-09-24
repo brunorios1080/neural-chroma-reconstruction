@@ -6,7 +6,7 @@ __pycache__/
 data/processed/
 data/raw/
 results/
-runs/
+/runs/
 .env
 *.ipynb_checkpoints
 .pytest_cache/

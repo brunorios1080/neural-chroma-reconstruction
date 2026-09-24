@@ -1,0 +1,8 @@
+{
+  "best_checkpoint": "/jet/home/brios/checkpoints/prism/prism_coco_unet_mse100/prism_unet_mse/best.pth",
+  "best_chroma_l1": 0.003848462234692454,
+  "best_epoch": 100,
+  "completed_epochs": 100,
+  "last_checkpoint": "/jet/home/brios/checkpoints/prism/prism_coco_unet_mse100/prism_unet_mse/last.pth",
+  "name": "prism_unet_mse"
+}

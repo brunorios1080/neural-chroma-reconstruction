@@ -1,0 +1,12 @@
+{
+  "extends": "prism_coco.json",
+  "loss": {"reconstruction": "mse"},
+  "training": {"batch_size": 32},
+  "experiments": [
+    {
+      "name": "prism_unet_mse",
+      "description": "Chroma-residual U-Net trained with MSE reconstruction",
+      "model": {"backbone": "unet", "width": 32}
+    }
+  ]
+}

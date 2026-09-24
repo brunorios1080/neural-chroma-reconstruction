@@ -1,0 +1,490 @@
+{
+  "suite": {
+    "manifest": "research/manifests/prism_coco_test2014.jsonl",
+    "dataset_root": "data/raw/coco",
+    "output_dir": "runs/prism_coco_test2014",
+    "data_kind": "synthetic_coco",
+    "model": {
+      "backbone": "residual",
+      "representation": "cartesian",
+      "width": 64,
+      "depth": 8
+    },
+    "loss": {
+      "reconstruction": "l1",
+      "edge_weight": 0.0,
+      "forward_weight": 0.0,
+      "amplitude_weight": 0.01,
+      "phase_weight": 0.005,
+      "uncertainty_warmup_epochs": 5,
+      "uncertainty_ramp_epochs": 10,
+      "adversarial_weight": 0.0,
+      "adversarial_warmup_epochs": 5,
+      "adversarial_ramp_epochs": 5
+    },
+    "training": {
+      "epochs": 100,
+      "batch_size": 16,
+      "crop_size": 256,
+      "workers": 8,
+      "persistent_workers": true,
+      "seed": 2026,
+      "device": "auto",
+      "learning_rate": 0.0001,
+      "min_learning_rate": 1e-06,
+      "weight_decay": 0.0001,
+      "gradient_clip_norm": 1.0,
+      "augment": true,
+      "allow_tf32": true,
+      "verify_hashes": true,
+      "validation_all_degradations": false
+    },
+    "degradations": [
+      {
+        "name": "center_box",
+        "siting": "center",
+        "downsample_filter": "box",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "center_triangle",
+        "siting": "center",
+        "downsample_filter": "triangle",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "center_gaussian",
+        "siting": "center",
+        "downsample_filter": "gaussian",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "center_lanczos3",
+        "siting": "center",
+        "downsample_filter": "lanczos3",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "left_box",
+        "siting": "left",
+        "downsample_filter": "box",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "left_triangle",
+        "siting": "left",
+        "downsample_filter": "triangle",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "left_gaussian",
+        "siting": "left",
+        "downsample_filter": "gaussian",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "left_lanczos3",
+        "siting": "left",
+        "downsample_filter": "lanczos3",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "cosited_box",
+        "siting": "cosited",
+        "downsample_filter": "box",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "cosited_triangle",
+        "siting": "cosited",
+        "downsample_filter": "triangle",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "cosited_gaussian",
+        "siting": "cosited",
+        "downsample_filter": "gaussian",
+        "upsample_filter": "bilinear"
+      },
+      {
+        "name": "cosited_lanczos3",
+        "siting": "cosited",
+        "downsample_filter": "lanczos3",
+        "upsample_filter": "bilinear"
+      }
+    ],
+    "experiments": [
+      {
+        "name": "prism_residual",
+        "description": "Zero-initialized Cartesian residual baseline descended from V6"
+      },
+      {
+        "name": "prism_mse",
+        "description": "Residual baseline with MSE reconstruction",
+        "loss": {
+          "reconstruction": "mse"
+        }
+      },
+      {
+        "name": "prism_edge",
+        "description": "Residual baseline with chroma-gradient supervision",
+        "loss": {
+          "edge_weight": 0.2
+        }
+      },
+      {
+        "name": "prism_naf",
+        "description": "NAF-style chroma-only restoration baseline",
+        "model": {
+          "backbone": "naf"
+        }
+      },
+      {
+        "name": "prism_polar",
+        "description": "Deterministic smooth-radius polar reconstruction",
+        "model": {
+          "representation": "polar"
+        }
+      },
+      {
+        "name": "prism_polar_prob",
+        "description": "Polar reconstruction with ramped joint uncertainty learning",
+        "model": {
+          "representation": "polar",
+          "uncertainty": true
+        }
+      },
+      {
+        "name": "prism_cartesian_prob",
+        "description": "Cartesian reconstruction with detached polar uncertainty heads",
+        "model": {
+          "uncertainty": true,
+          "detached_uncertainty": true
+        }
+      },
+      {
+        "name": "prism_conditioned",
+        "description": "Cartesian model supplied with known siting/filter metadata",
+        "model": {
+          "conditioned": true
+        }
+      },
+      {
+        "name": "prism_forward",
+        "description": "Cartesian baseline plus measurement consistency",
+        "loss": {
+          "forward_weight": 0.1
+        }
+      },
+      {
+        "name": "prism_polar_forward",
+        "description": "Probabilistic polar model plus measurement consistency",
+        "model": {
+          "representation": "polar",
+          "uncertainty": true
+        },
+        "loss": {
+          "forward_weight": 0.1
+        }
+      },
+      {
+        "name": "prism_unet",
+        "description": "Chroma-residual U-Net retaining the input luminance",
+        "model": {
+          "backbone": "unet",
+          "width": 32
+        }
+      },
+      {
+        "name": "prism_gan",
+        "description": "Same U-Net with a weak, ramped conditional adversarial loss",
+        "model": {
+          "backbone": "unet",
+          "width": 32
+        },
+        "loss": {
+          "adversarial_weight": 0.001
+        }
+      }
+    ],
+    "evaluation": {
+      "baselines": [
+        "bilinear"
+      ]
+    }
+  },
+  "manifest": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/test_manifest.jsonl",
+  "models": [
+    {
+      "name": "prism_residual",
+      "kind": "prism",
+      "group": 0,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_residual/best.pth",
+      "training_status": "full_dataset_checkpoint",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_residual/selected.pth",
+      "sha256": "6fb40abc01571088a59d113ac6d8393bbc0eebd6afca1ceceda2ef1fa3f29b09",
+      "epoch": 21,
+      "parameters": 593794
+    },
+    {
+      "name": "prism_mse",
+      "kind": "prism",
+      "group": 1,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_mse/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_mse/selected.pth",
+      "sha256": "6e8891369086fb128bb6fcacacb67d9473dd4ba862e472cb121c35ff3d85d5a9",
+      "epoch": 2,
+      "parameters": 593794
+    },
+    {
+      "name": "prism_edge",
+      "kind": "prism",
+      "group": 1,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_edge/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_edge/selected.pth",
+      "sha256": "e0aeeff9db1b20386382609fcca88c452c37efaec29e2fc5a8a55c6c1373ac58",
+      "epoch": 2,
+      "parameters": 593794
+    },
+    {
+      "name": "prism_naf",
+      "kind": "prism",
+      "group": 1,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_naf/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_naf/selected.pth",
+      "sha256": "23e9d15ae826c212046bb7b908a4203744702160565df366ae54110e62ee1d2f",
+      "epoch": 2,
+      "parameters": 249218
+    },
+    {
+      "name": "prism_polar",
+      "kind": "prism",
+      "group": 0,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_polar/best.pth",
+      "training_status": "full_dataset_checkpoint",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_polar/selected.pth",
+      "sha256": "cd607d63d2583cf4e5906369e866d5a83c43c3f8402d938c97a5244518eac60a",
+      "epoch": 21,
+      "parameters": 594371
+    },
+    {
+      "name": "prism_polar_prob",
+      "kind": "prism",
+      "group": 0,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_polar_prob/best.pth",
+      "training_status": "full_dataset_checkpoint",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_polar_prob/selected.pth",
+      "sha256": "868ae8c9cb6216218dd897eed7cdb49c2faba578173a474cd73ad38c686cf95a",
+      "epoch": 5,
+      "parameters": 595525
+    },
+    {
+      "name": "prism_cartesian_prob",
+      "kind": "prism",
+      "group": 0,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_cartesian_prob/best.pth",
+      "training_status": "full_dataset_checkpoint",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_cartesian_prob/selected.pth",
+      "sha256": "d1d3d18289af3d0df5debce43b27497d7e0e2f46879b83606aa34587c629c063",
+      "epoch": 12,
+      "parameters": 594948
+    },
+    {
+      "name": "prism_conditioned",
+      "kind": "prism",
+      "group": 1,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_conditioned/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_conditioned/selected.pth",
+      "sha256": "5ff610c5ee2c88f55974b15806c4ca9d429d68daf9e83aa3245e0dae7eac5382",
+      "epoch": 2,
+      "parameters": 594306
+    },
+    {
+      "name": "prism_forward",
+      "kind": "prism",
+      "group": 2,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_forward/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_forward/selected.pth",
+      "sha256": "a429a6e3b6eeb86476bf3c434b2808aec37dab4c2fdf39186f7f0705e8452e8a",
+      "epoch": 2,
+      "parameters": 593794
+    },
+    {
+      "name": "prism_polar_forward",
+      "kind": "prism",
+      "group": 2,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_polar_forward/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_polar_forward/selected.pth",
+      "sha256": "7ed325d808922f17496ea7590df9647ddbf4b4083f57b9c9370e78bf750d88db",
+      "epoch": 2,
+      "parameters": 595525
+    },
+    {
+      "name": "prism_unet",
+      "kind": "prism",
+      "group": 2,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_unet/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_unet/selected.pth",
+      "sha256": "b97af92e1b4f43ed23c6d7c7afe48e8586ce35ca430e1410be92fcd94b623392",
+      "epoch": 2,
+      "parameters": 1938178
+    },
+    {
+      "name": "prism_gan",
+      "kind": "prism",
+      "group": 2,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_gan/best.pth",
+      "training_status": "two_epoch_100_image_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/prism_gan/selected.pth",
+      "sha256": "c4a355c8c255fbe39c6b8e17fc3fdaa55e5399edb894298d78355fe8be606e0a",
+      "epoch": 2,
+      "parameters": 1938178
+    },
+    {
+      "name": "v5",
+      "kind": "legacy",
+      "version": "v5",
+      "group": 3,
+      "source": "/jet/home/brios/neural-chroma-reconstruction/models/version5/epoch_010.pth",
+      "training_status": "historical_checkpoint",
+      "overlap_audit": "original_training_manifest_unavailable",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/v5/selected.pth",
+      "sha256": "42449757c0f4999a6131c48a566263e61f0c6cf4d75ef4b8a87cbc4a47fbf16d",
+      "epoch": 10,
+      "parameters": 1925667
+    },
+    {
+      "name": "v5_1",
+      "kind": "legacy",
+      "version": "v5",
+      "group": 3,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/v5.1/best.pth",
+      "training_status": "historical_checkpoint",
+      "overlap_audit": "original_training_manifest_unavailable",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/v5_1/selected.pth",
+      "sha256": "a00ed5793a876003374142493287b8e28243256b5a36667de89f16c3aacbde23",
+      "epoch": 13,
+      "parameters": 1925667
+    },
+    {
+      "name": "v6",
+      "kind": "legacy",
+      "version": "v6",
+      "group": 3,
+      "source": "/jet/home/brios/neural-chroma-reconstruction/models/version6/res_epoch_030.pth",
+      "training_status": "historical_checkpoint",
+      "overlap_audit": "original_training_manifest_unavailable",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/v6/selected.pth",
+      "sha256": "fbf27827c76cfa3de4ee28f6e896509fe8bed54d3a84518ae5ee374ce104bf0a",
+      "epoch": 30,
+      "parameters": 593794
+    },
+    {
+      "name": "v7",
+      "kind": "v7",
+      "version": "v7",
+      "group": 3,
+      "source": "/ocean/projects/cis260224p/shared/brios/checkpoints/v7/v7_coco/best.pth",
+      "training_status": "historical_checkpoint",
+      "overlap_audit": "original_training_manifest_unavailable",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/v7/selected.pth",
+      "sha256": "c2b4d1c7c0485911a4a6aeb4a5d4e33533e0deb9e8680da078b0b5cde4ad5a0b",
+      "epoch": 100,
+      "parameters": 595525
+    },
+    {
+      "name": "ablation_smoke_base",
+      "kind": "ablation",
+      "group": 4,
+      "source": "/jet/home/brios/neural-chroma-reconstruction/research/checkpoints/smoke/smoke_base/best.pth",
+      "training_status": "one_epoch_fixture_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/ablation_smoke_base/selected.pth",
+      "sha256": "1b59df98b283881c7cfe90a4ec5fe7c0de6afae38e1c1d76b1f98963f82d46a8",
+      "epoch": 1,
+      "parameters": 1538
+    },
+    {
+      "name": "ablation_smoke_direct",
+      "kind": "ablation",
+      "group": 4,
+      "source": "/jet/home/brios/neural-chroma-reconstruction/research/checkpoints/smoke/smoke_direct/best.pth",
+      "training_status": "one_epoch_fixture_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/ablation_smoke_direct/selected.pth",
+      "sha256": "fff0cf258785808f3d7a1e1e58dd713f9785f344cf1f2cfa73cadebfdace4f35",
+      "epoch": 1,
+      "parameters": 1538
+    },
+    {
+      "name": "ablation_smoke_naf_style",
+      "kind": "ablation",
+      "group": 4,
+      "source": "/jet/home/brios/neural-chroma-reconstruction/research/checkpoints/smoke/smoke_naf_style/best.pth",
+      "training_status": "one_epoch_fixture_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/ablation_smoke_naf_style/selected.pth",
+      "sha256": "5206174c8ef7cb4d147f36496a176cea66f71d55082a4b8a964f2acffd7695d7",
+      "epoch": 1,
+      "parameters": 1082
+    },
+    {
+      "name": "ablation_smoke_no_luma",
+      "kind": "ablation",
+      "group": 4,
+      "source": "/jet/home/brios/neural-chroma-reconstruction/research/checkpoints/smoke/smoke_no_luma/best.pth",
+      "training_status": "one_epoch_fixture_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/ablation_smoke_no_luma/selected.pth",
+      "sha256": "c85711398ef16ded9311be5010372595df63e494d33e2177fa523ce5926ea24f",
+      "epoch": 1,
+      "parameters": 1466
+    },
+    {
+      "name": "ablation_smoke_srcnn",
+      "kind": "ablation",
+      "group": 4,
+      "source": "/jet/home/brios/neural-chroma-reconstruction/research/checkpoints/smoke/smoke_srcnn/best.pth",
+      "training_status": "one_epoch_fixture_smoke",
+      "overlap_audit": "known_training_sources_excluded",
+      "weights": "/ocean/projects/cis260224p/shared/brios/evaluations/test2014_all_20260905/weights/ablation_smoke_srcnn/selected.pth",
+      "sha256": "af726e8a6a4b1488b78dc8d33becc3c89472208ed46b98e28e66214a6b730fb1",
+      "epoch": 1,
+      "parameters": 2190
+    }
+  ],
+  "baseline": "bilinear",
+  "original_images": 40499,
+  "images": 40498,
+  "additional_overlap_exclusions": 1,
+  "exclusion_sources": [
+    {
+      "path": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_residual/manifest.jsonl",
+      "sha256": "da0e993e233183bc27e2324b482c516c785f187a92ded05acacb4141e30ac780"
+    },
+    {
+      "path": "/jet/home/brios/neural-chroma-reconstruction/research/manifests/fixture.jsonl",
+      "sha256": "c208b0801f5a748db5f41b43cab4566001e700608a9fe604bed1e15642dda26f"
+    }
+  ],
+  "selection": "Best validation checkpoint for each distinct variant; historical V5/V6 use their sole available checkpoint. Smoke/benchmark duplicates of a full-data model are not additional variants."
+}

@@ -15,6 +15,10 @@ polar and Cartesian uncertainty variants, degradation conditioning, measurement
 consistency, and chroma-only U-Nets. See [Prism training and evaluation](docs/prism_training.md)
 for the model map, smoke checks, Bridges-2 submission, monitoring, and resume commands.
 
+Saved experiment weights and their run metadata are under [models/experiments](models/experiments/README.md).
+The train, validation, and test image IDs are under [research/manifests/ids](research/manifests/ids/README.md);
+the COCO image datasets are stored separately.
+
 | Model | Parameters | Design | Training objective |
 | --- | ---: | --- | --- |
 | V5 | 1,925,667 generator + 694,241 discriminator | U-Net and PatchGAN that reconstruct full YCrCb | adversarial loss + 10x full-image L1 |

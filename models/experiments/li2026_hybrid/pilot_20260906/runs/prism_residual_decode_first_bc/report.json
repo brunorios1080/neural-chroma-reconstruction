@@ -1,0 +1,36 @@
+{
+  "best_epoch": 0,
+  "completed_epochs": 4,
+  "last_validation": {
+    "baseline_cpsnr_rgb": 43.33823989611524,
+    "baseline_mae_rgb_255": 1.4592180252075195,
+    "baseline_mse_rgb_255": 14.592563947041828,
+    "correction_gain": 0.1751939356327057,
+    "epoch": 4,
+    "hybrid_cpsnr_rgb": 41.854438439562216,
+    "hybrid_mae_rgb_255": 1.2986615498860676,
+    "hybrid_mse_rgb_255": 9.949993769327799,
+    "images": 64,
+    "mean_cpsnr_gain_db": -1.4838014565530244,
+    "seconds": 1.6829292559996247,
+    "train_rgb_mse": 0.00016347786475989778,
+    "wins": 61
+  },
+  "scope": "COCO crop pilot; no UHD/Kodak evaluation or author-code comparison",
+  "selected_validation": {
+    "baseline_cpsnr_rgb": 43.33823989611524,
+    "baseline_mae_rgb_255": 1.4592180252075195,
+    "baseline_mse_rgb_255": 14.592563947041828,
+    "correction_gain": 0.0,
+    "epoch": 0,
+    "hybrid_cpsnr_rgb": 43.33823989611524,
+    "hybrid_mae_rgb_255": 1.4592180252075195,
+    "hybrid_mse_rgb_255": 14.592563947041828,
+    "images": 64,
+    "mean_cpsnr_gain_db": 0.0,
+    "seconds": 0.9792610619915649,
+    "train_rgb_mse": null,
+    "wins": 0
+  },
+  "validation_selection_includes_epoch_zero": true
+}

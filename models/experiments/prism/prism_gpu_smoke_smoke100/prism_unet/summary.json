@@ -1,0 +1,8 @@
+{
+  "best_checkpoint": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_unet/best.pth",
+  "best_chroma_l1": 0.006178463343530893,
+  "best_epoch": 2,
+  "completed_epochs": 2,
+  "last_checkpoint": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_unet/last.pth",
+  "name": "prism_unet"
+}

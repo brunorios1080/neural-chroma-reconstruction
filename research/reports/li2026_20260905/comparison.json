@@ -1,0 +1,2116 @@
+{
+  "status": "complete",
+  "completed_groups": [
+    "kodak",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15"
+  ],
+  "results": [
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "conventional/bicubic",
+      "images": 24,
+      "cpsnr_rgb": 46.595637965810575,
+      "mae_rgb_255": 0.6690778025874385,
+      "mse_rgb_255": 1.5794589077984844,
+      "ciede2000": 0.7168130976193283,
+      "ssim_luma": 0.9990151575217688,
+      "fsim_luma": 0.9998706504702568
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "conventional/bilinear",
+      "images": 24,
+      "cpsnr_rgb": 45.54629093980038,
+      "mae_rgb_255": 0.7488424513075089,
+      "mse_rgb_255": 2.019493385597512,
+      "ciede2000": 0.7848408935893357,
+      "ssim_luma": 0.9990116520900297,
+      "fsim_luma": 0.9998658647139868
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "prism_cartesian_prob",
+      "images": 24,
+      "cpsnr_rgb": 46.54530078838956,
+      "mae_rgb_255": 0.6965691248575846,
+      "mse_rgb_255": 1.572469817267524,
+      "ciede2000": 0.7412309327918675,
+      "ssim_luma": 0.9990319772851214,
+      "fsim_luma": 0.999882365266482
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "prism_polar",
+      "images": 24,
+      "cpsnr_rgb": 46.50335502887243,
+      "mae_rgb_255": 0.701785193549262,
+      "mse_rgb_255": 1.6017617826108577,
+      "ciede2000": 0.7461139265710287,
+      "ssim_luma": 0.9990317713156616,
+      "fsim_luma": 0.9998834306995074
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "prism_polar_prob",
+      "images": 24,
+      "cpsnr_rgb": 46.42881180954291,
+      "mae_rgb_255": 0.7048596276177301,
+      "mse_rgb_255": 1.6277283562554252,
+      "ciede2000": 0.74937825148715,
+      "ssim_luma": 0.9990288973588357,
+      "fsim_luma": 0.9998832494020462
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "prism_residual",
+      "images": 24,
+      "cpsnr_rgb": 46.43227756697033,
+      "mae_rgb_255": 0.7054006082040293,
+      "mse_rgb_255": 1.6249316180193862,
+      "ciede2000": 0.750201397462241,
+      "ssim_luma": 0.9990342247867224,
+      "fsim_luma": 0.9998832121491432
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "scaled_matrix/bicubic",
+      "images": 24,
+      "cpsnr_rgb": 47.14178115802266,
+      "mae_rgb_255": 0.5685184266832141,
+      "mse_rgb_255": 1.4293702796653462,
+      "ciede2000": 0.6110536179966223,
+      "ssim_luma": 0.999576146532315,
+      "fsim_luma": 0.999947652220726
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "scaled_matrix/bilinear",
+      "images": 24,
+      "cpsnr_rgb": 45.93561972728761,
+      "mae_rgb_255": 0.6607604556613499,
+      "mse_rgb_255": 1.8819198608398438,
+      "ciede2000": 0.6935611457716128,
+      "ssim_luma": 0.999562768253213,
+      "fsim_luma": 0.9999419550100962
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "v5",
+      "images": 24,
+      "cpsnr_rgb": 40.713555258423504,
+      "mae_rgb_255": 1.720177756415473,
+      "mse_rgb_255": 5.66081428527832,
+      "ciede2000": 1.6407452047749838,
+      "ssim_luma": 0.998460829617514,
+      "fsim_luma": 0.999556802213192
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "v5_1",
+      "images": 24,
+      "cpsnr_rgb": 44.27623265353552,
+      "mae_rgb_255": 1.0439159252025463,
+      "mse_rgb_255": 2.566376297562211,
+      "ciede2000": 0.8951073338970142,
+      "ssim_luma": 0.9985246529016064,
+      "fsim_luma": 0.9995766058564186
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "v6",
+      "images": 24,
+      "cpsnr_rgb": 47.944188048993645,
+      "mae_rgb_255": 0.628262272587529,
+      "mse_rgb_255": 1.094954596625434,
+      "ciede2000": 0.688475478296721,
+      "ssim_luma": 0.9990368716418206,
+      "fsim_luma": 0.999883400897185
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "method": "v7",
+      "images": 24,
+      "cpsnr_rgb": 46.22099414799268,
+      "mae_rgb_255": 0.7183387191207321,
+      "mse_rgb_255": 1.6842997515643086,
+      "ciede2000": 0.7704404960729115,
+      "ssim_luma": 0.9990185938359959,
+      "fsim_luma": 0.9998784437775612
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "conventional/bicubic",
+      "images": 24,
+      "cpsnr_rgb": 46.67322532399965,
+      "mae_rgb_255": 0.6543626078852901,
+      "mse_rgb_255": 1.5807748370700414,
+      "ciede2000": 0.733647250872428,
+      "ssim_luma": 0.9989842247101387,
+      "fsim_luma": 0.9998537649710973
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "conventional/bilinear",
+      "images": 24,
+      "cpsnr_rgb": 47.247287547668634,
+      "mae_rgb_255": 0.6046109022917572,
+      "mse_rgb_255": 1.4096578315452293,
+      "ciede2000": 0.6943849046430399,
+      "ssim_luma": 0.9989882806784883,
+      "fsim_luma": 0.9998553395271301
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "prism_cartesian_prob",
+      "images": 24,
+      "cpsnr_rgb": 43.53416555563654,
+      "mae_rgb_255": 0.9391796677200882,
+      "mse_rgb_255": 3.4161270989312076,
+      "ciede2000": 0.9680527960062921,
+      "ssim_luma": 0.9990139253010782,
+      "fsim_luma": 0.9998778601487478
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "prism_polar",
+      "images": 24,
+      "cpsnr_rgb": 43.489141135340965,
+      "mae_rgb_255": 0.9486531151665583,
+      "mse_rgb_255": 3.435047644155997,
+      "ciede2000": 0.9674573955694047,
+      "ssim_luma": 0.9990180200738877,
+      "fsim_luma": 0.9998810316125551
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "prism_polar_prob",
+      "images": 24,
+      "cpsnr_rgb": 43.986576038568295,
+      "mae_rgb_255": 0.890234982525861,
+      "mse_rgb_255": 2.9474531103063506,
+      "ciede2000": 0.9155081587438114,
+      "ssim_luma": 0.9990135686641239,
+      "fsim_luma": 0.999878299733003
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "prism_residual",
+      "images": 24,
+      "cpsnr_rgb": 43.08890961334938,
+      "mae_rgb_255": 1.0023091634114583,
+      "mse_rgb_255": 3.7779097380461515,
+      "ciede2000": 1.0252805102062619,
+      "ssim_luma": 0.9990180748417008,
+      "fsim_luma": 0.9998798494537672
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_decode_first/bicubic",
+      "images": 24,
+      "cpsnr_rgb": 47.72880802926273,
+      "mae_rgb_255": 0.46451610989040804,
+      "mse_rgb_255": 1.3128384484185114,
+      "ciede2000": 0.5237095894181614,
+      "ssim_luma": 0.9996275779839211,
+      "fsim_luma": 0.999939834078153
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_decode_first/bilinear",
+      "images": 24,
+      "cpsnr_rgb": 48.42125611039589,
+      "mae_rgb_255": 0.41601919244836877,
+      "mse_rgb_255": 1.1580396228366427,
+      "ciede2000": 0.4854729318799693,
+      "ssim_luma": 0.999603967609346,
+      "fsim_luma": 0.9999397173523903
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_hybrid/bicubic",
+      "images": 24,
+      "cpsnr_rgb": 46.881304087254755,
+      "mae_rgb_255": 0.5687855261343497,
+      "mse_rgb_255": 1.520151102984393,
+      "ciede2000": 0.6348464924579962,
+      "ssim_luma": 0.9995943494611437,
+      "fsim_luma": 0.9999367520213127
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_hybrid/bilinear",
+      "images": 24,
+      "cpsnr_rgb": 47.61003223926426,
+      "mae_rgb_255": 0.5057524928340206,
+      "mse_rgb_255": 1.3217087498417606,
+      "ciede2000": 0.5806003595996783,
+      "ssim_luma": 0.9996022632511536,
+      "fsim_luma": 0.9999392454822859
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_lifting/bicubic",
+      "images": 24,
+      "cpsnr_rgb": 46.873591322476365,
+      "mae_rgb_255": 0.5693928047462745,
+      "mse_rgb_255": 1.5219355689154732,
+      "ciede2000": 0.6349174484053057,
+      "ssim_luma": 0.9995912998839507,
+      "fsim_luma": 0.9999361485242844
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_lifting/bilinear",
+      "images": 24,
+      "cpsnr_rgb": 47.600735100813836,
+      "mae_rgb_255": 0.5064505117910879,
+      "mse_rgb_255": 1.3234341939290364,
+      "ciede2000": 0.5807326275647396,
+      "ssim_luma": 0.9995993860642054,
+      "fsim_luma": 0.9999385898311933
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_matrix/bicubic",
+      "images": 24,
+      "cpsnr_rgb": 47.476281625346616,
+      "mae_rgb_255": 0.5087786427250615,
+      "mse_rgb_255": 1.3693978698165328,
+      "ciede2000": 0.5769484188345991,
+      "ssim_luma": 0.99958635744259,
+      "fsim_luma": 0.9999344448248545
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "scaled_matrix/bilinear",
+      "images": 24,
+      "cpsnr_rgb": 48.149690960042484,
+      "mae_rgb_255": 0.457288106282552,
+      "mse_rgb_255": 1.209037710119177,
+      "ciede2000": 0.5356487243777305,
+      "ssim_luma": 0.9995990248430299,
+      "fsim_luma": 0.9999372959136963
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "v5",
+      "images": 24,
+      "cpsnr_rgb": 38.29607921943629,
+      "mae_rgb_255": 2.0462078518337674,
+      "mse_rgb_255": 10.291610505845812,
+      "ciede2000": 1.975604590745039,
+      "ssim_luma": 0.9983119009774928,
+      "fsim_luma": 0.9995131393273672
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "v5_1",
+      "images": 24,
+      "cpsnr_rgb": 40.52857655432022,
+      "mae_rgb_255": 1.5054311045893918,
+      "mse_rgb_255": 6.495387642471879,
+      "ciede2000": 1.3811039621983754,
+      "ssim_luma": 0.9984059340413965,
+      "fsim_luma": 0.9995386352141699
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "v6",
+      "images": 24,
+      "cpsnr_rgb": 43.185086595443146,
+      "mae_rgb_255": 1.042303579824942,
+      "mse_rgb_255": 3.561844295925564,
+      "ciede2000": 1.080251294405982,
+      "ssim_luma": 0.9989924286520849,
+      "fsim_luma": 0.9998677720626196
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "method": "v7",
+      "images": 24,
+      "cpsnr_rgb": 43.87302083551239,
+      "mae_rgb_255": 0.9068097008599173,
+      "mse_rgb_255": 3.0073163774278426,
+      "ciede2000": 0.9437222608176681,
+      "ssim_luma": 0.9989907641092878,
+      "fsim_luma": 0.99986382573843
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "conventional/bicubic",
+      "images": 240,
+      "cpsnr_rgb": 51.27593289439738,
+      "mae_rgb_255": 0.4350857262299349,
+      "mse_rgb_255": 0.4875387083378036,
+      "ciede2000": 0.48790500138812715,
+      "ssim_luma": 0.9985799985095161,
+      "fsim_luma": 0.9998025933901469
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "conventional/bilinear",
+      "images": 240,
+      "cpsnr_rgb": 51.24215418412197,
+      "mae_rgb_255": 0.4329367325159037,
+      "mse_rgb_255": 0.49203080132130245,
+      "ciede2000": 0.48397907221975955,
+      "ssim_luma": 0.9985815670764959,
+      "fsim_luma": 0.9998010970652104
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "prism_cartesian_prob",
+      "images": 240,
+      "cpsnr_rgb": 51.12489817017491,
+      "mae_rgb_255": 0.44388940420516804,
+      "mse_rgb_255": 0.5052967022682843,
+      "ciede2000": 0.497273825221768,
+      "ssim_luma": 0.9985796101112181,
+      "fsim_luma": 0.9998048615952333
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "prism_polar",
+      "images": 240,
+      "cpsnr_rgb": 50.93380748968934,
+      "mae_rgb_255": 0.4544749325757393,
+      "mse_rgb_255": 0.5285328034884926,
+      "ciede2000": 0.5067315563081691,
+      "ssim_luma": 0.998573366529783,
+      "fsim_luma": 0.9998051099479198
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "prism_polar_prob",
+      "images": 240,
+      "cpsnr_rgb": 50.730281443960486,
+      "mae_rgb_255": 0.4663788157311275,
+      "mse_rgb_255": 0.5550390551808021,
+      "ciede2000": 0.5159277849987638,
+      "ssim_luma": 0.9985699546547722,
+      "fsim_luma": 0.9998061187565327
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "prism_residual",
+      "images": 240,
+      "cpsnr_rgb": 51.044522190753135,
+      "mae_rgb_255": 0.44827108522069736,
+      "mse_rgb_255": 0.5148240310519888,
+      "ciede2000": 0.5012344394152844,
+      "ssim_luma": 0.9985780874587256,
+      "fsim_luma": 0.9998049768308799
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_decode_first/bicubic",
+      "images": 240,
+      "cpsnr_rgb": 56.817298064955125,
+      "mae_rgb_255": 0.11879040480876514,
+      "mse_rgb_255": 0.14459317980106595,
+      "ciede2000": 0.13245503705353254,
+      "ssim_luma": 0.9998106480577211,
+      "fsim_luma": 0.9999990279475848
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_decode_first/bilinear",
+      "images": 240,
+      "cpsnr_rgb": 56.42125460369331,
+      "mae_rgb_255": 0.12357476415958964,
+      "mse_rgb_255": 0.15952986834282673,
+      "ciede2000": 0.13561896569132176,
+      "ssim_luma": 0.9997937633224405,
+      "fsim_luma": 0.999998901039362
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_hybrid/bicubic",
+      "images": 240,
+      "cpsnr_rgb": 51.90211085301178,
+      "mae_rgb_255": 0.343227604838301,
+      "mse_rgb_255": 0.4224190148876172,
+      "ciede2000": 0.3811060908842227,
+      "ssim_luma": 0.9994808361928954,
+      "fsim_luma": 0.9999659848709901
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_hybrid/bilinear",
+      "images": 240,
+      "cpsnr_rgb": 52.27502729354685,
+      "mae_rgb_255": 0.3153675591254234,
+      "mse_rgb_255": 0.3895879032371444,
+      "ciede2000": 0.3499854638245481,
+      "ssim_luma": 0.9995127730844721,
+      "fsim_luma": 0.999964602291584
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_lifting/bicubic",
+      "images": 240,
+      "cpsnr_rgb": 51.84196965436565,
+      "mae_rgb_255": 0.34495021009900545,
+      "mse_rgb_255": 0.4283361686072922,
+      "ciede2000": 0.3811592295957286,
+      "ssim_luma": 0.9994813963973245,
+      "fsim_luma": 0.999964160223802
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_lifting/bilinear",
+      "images": 240,
+      "cpsnr_rgb": 52.21540709978555,
+      "mae_rgb_255": 0.3171936764142215,
+      "mse_rgb_255": 0.39496822078154764,
+      "ciede2000": 0.35019300619991145,
+      "ssim_luma": 0.9995149466704959,
+      "fsim_luma": 0.9999628233412902
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_matrix/bicubic",
+      "images": 240,
+      "cpsnr_rgb": 54.61254119945196,
+      "mae_rgb_255": 0.20047908826383956,
+      "mse_rgb_255": 0.23044621886017122,
+      "ciede2000": 0.23222726791668113,
+      "ssim_luma": 0.9996563919175734,
+      "fsim_luma": 0.9999764395256837
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "scaled_matrix/bilinear",
+      "images": 240,
+      "cpsnr_rgb": 54.456412478381466,
+      "mae_rgb_255": 0.2003068622472376,
+      "mse_rgb_255": 0.2399851379493309,
+      "ciede2000": 0.22965120437916228,
+      "ssim_luma": 0.9996722757414508,
+      "fsim_luma": 0.9999761387705803
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "v5",
+      "images": 240,
+      "cpsnr_rgb": 41.64610029156506,
+      "mae_rgb_255": 1.6910854404697666,
+      "mse_rgb_255": 4.800125767252743,
+      "ciede2000": 1.5381007266161029,
+      "ssim_luma": 0.9977309814271523,
+      "fsim_luma": 0.9995363622903823
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "v5_1",
+      "images": 240,
+      "cpsnr_rgb": 45.88247218799915,
+      "mae_rgb_255": 0.9822367349423383,
+      "mse_rgb_255": 1.769510170416851,
+      "ciede2000": 0.7984357790398334,
+      "ssim_luma": 0.9978967731098614,
+      "fsim_luma": 0.9995831693212192
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "v6",
+      "images": 240,
+      "cpsnr_rgb": 50.27361587926673,
+      "mae_rgb_255": 0.494317742621991,
+      "mse_rgb_255": 0.6179197345003736,
+      "ciede2000": 0.5469120741978989,
+      "ssim_luma": 0.99856965135385,
+      "fsim_luma": 0.9998064525425434
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "method": "v7",
+      "images": 240,
+      "cpsnr_rgb": 50.70133047456251,
+      "mae_rgb_255": 0.4695508177894663,
+      "mse_rgb_255": 0.559262643272895,
+      "ciede2000": 0.5221096572267814,
+      "ssim_luma": 0.998572278894597,
+      "fsim_luma": 0.9998105272650719
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_cartesian_prob",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.9990098485891797,
+      "win_fraction": 0.9583333333333334
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.6096810611019589,
+      "win_fraction": 0.75
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -0.596480369633098,
+      "win_fraction": 0.125
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_polar",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.9570640890720522,
+      "win_fraction": 0.9166666666666666
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_polar",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.5677353015848313,
+      "win_fraction": 0.75
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_polar",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -0.6384261291502256,
+      "win_fraction": 0.20833333333333334
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_polar_prob",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.8825208697425267,
+      "win_fraction": 0.9583333333333334
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.4931920822553059,
+      "win_fraction": 0.7916666666666666
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -0.712969348479751,
+      "win_fraction": 0.125
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_residual",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.885986627169952,
+      "win_fraction": 0.9166666666666666
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_residual",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.49665783968273125,
+      "win_fraction": 0.7083333333333334
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "prism_residual",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -0.7095035910523256,
+      "win_fraction": 0.125
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v5",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.832735681376879,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v5",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -5.222064468864101,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v5",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -6.4282258995991555,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v5_1",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -1.2700582862648504,
+      "win_fraction": 0.16666666666666666
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v5_1",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -1.659387073752071,
+      "win_fraction": 0.08333333333333333
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v5_1",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -2.8655485044871285,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v6",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 2.397897109193264,
+      "win_fraction": 1.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v6",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 2.008568321706043,
+      "win_fraction": 0.9583333333333334
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v6",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.8024068909709863,
+      "win_fraction": 0.75
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v7",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.6747032081923029,
+      "win_fraction": 0.875
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v7",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": 0.28537442070508207,
+      "win_fraction": 0.7083333333333334
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "center_box",
+      "model": "v7",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -0.9207870100299749,
+      "win_fraction": 0.125
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.713121992032091,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.615525404405941,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.942116069710069,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.075866683627716,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.347138531618215,
+      "win_fraction": 0.08333333333333333
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.066569545177296,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.3394257668398226,
+      "win_fraction": 0.08333333333333333
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.887090554759345,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.194642473626183,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.7581464123276622,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.660549824701512,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.9871404900056397,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.120891103923289,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.392162951913788,
+      "win_fraction": 0.08333333333333333
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.111593965472868,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.384450187135395,
+      "win_fraction": 0.08333333333333333
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.932114975054916,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.239666893921755,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.2607115091003345,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.163114921474185,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.4897055867783124,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.6234562006959603,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -2.89472804868646,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.6141590622455397,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -2.8870152839080663,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.4346800718275885,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.742231990694427,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.158377934319263,
+      "win_fraction": 0.041666666666666664
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -5.060781346693113,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.387372011997241,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.521122625914889,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.792394473905388,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.511825487464467,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.784681709126994,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -5.332346497046516,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.639898415913355,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -8.951208328232347,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -9.853611740606198,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -9.180202405910327,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -9.313953019827972,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -8.585224867818471,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -9.304655881377553,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -8.57751210304008,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -10.1251768909596,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -9.43272880982644,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -6.71871099334842,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -7.621114405722268,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -6.947705071026397,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -7.081455684944044,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -6.352727532934544,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -7.072158546493623,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -6.345014768156152,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -7.892679556075674,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -7.2002314749425125,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.0622009522254885,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.964604364599336,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.291195029903464,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.424945643821114,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.696217491811613,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.415648505370693,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.688504727033218,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -5.236169514952741,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.54372143381958,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "conventional/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.3742667121562278,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.276670124530077,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.6032607898342044,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.7370114037518527,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.0082832517423532,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.727714265301433,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.0005704869639587,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 24,
+      "mean_cpsnr_gain_db": -4.5482352748834805,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "kodak",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 24,
+      "mean_cpsnr_gain_db": -3.85578719375032,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.11725601394705265,
+      "win_fraction": 0.19583333333333333
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.3315143082065632,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.4876430292770655,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.150129123371973,
+      "win_fraction": 0.008333333333333333
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.7772126828368792,
+      "win_fraction": 0.029166666666666667
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.0905089296106611,
+      "win_fraction": 0.008333333333333333
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.7170714841907591,
+      "win_fraction": 0.0375
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.296356433518374,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_cartesian_prob",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.692399894780243,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.30834669443261603,
+      "win_fraction": 0.0625
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.5226049886921285,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.67873370976263,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.3412198038575376,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.968303363322443,
+      "win_fraction": 0.016666666666666666
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.281599610096225,
+      "win_fraction": 0.004166666666666667
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.9081621646763227,
+      "win_fraction": 0.020833333333333332
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.487447114003939,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.883490575265804,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.5118727401614435,
+      "win_fraction": 0.004166666666666667
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.7261310344209546,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.88225975549146,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.5447458495863653,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.1718294090512695,
+      "win_fraction": 0.0125
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.485125655825052,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.111688210405151,
+      "win_fraction": 0.016666666666666666
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.690973159732767,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_polar_prob",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -6.087016620994631,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.19763199336885762,
+      "win_fraction": 0.12916666666666668
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.4118902876283674,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.5680190086988737,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.230505102793778,
+      "win_fraction": 0.004166666666666667
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.8575886622586846,
+      "win_fraction": 0.025
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.1708849090324662,
+      "win_fraction": 0.004166666666666667
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.7974474636125639,
+      "win_fraction": 0.029166666666666667
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.376732412940183,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "prism_residual",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.772775874202046,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -9.596053892556874,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -12.81031218681639,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -12.966440907886888,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -10.628927001981795,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -10.256010561446695,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -10.569306808220484,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -10.195869362800583,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -14.775154312128201,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -15.17119777339006,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.359681996122816,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -8.57394029038233,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -8.730069011452834,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -6.392555105547739,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -6.0196386650126446,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -6.332934911786428,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.9594974663665266,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -10.538782415694149,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v5_1",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -10.934825876956001,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.9685383048552079,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -4.182796599114715,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -4.338925320185223,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -2.00141141428013,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.6284949737450343,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.9417912205188161,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.5683537750989152,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -6.147638724426533,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v6",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -6.5436821856883975,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "conventional/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -0.5408237095594401,
+      "win_fraction": 0.008333333333333333
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_matrix/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.7550820038189485,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_matrix/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -3.9112107248894543,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_hybrid/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.5736968189843614,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_hybrid/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.2007803784492668,
+      "win_fraction": 0.016666666666666666
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_lifting/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.5140766252230478,
+      "win_fraction": 0.004166666666666667
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_lifting/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -1.1406391798031466,
+      "win_fraction": 0.016666666666666666
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_decode_first/bilinear",
+      "images": 240,
+      "mean_cpsnr_gain_db": -5.719924129130762,
+      "win_fraction": 0.0
+    },
+    {
+      "dataset": "uhd240",
+      "sampling": "cosited_point",
+      "model": "v7",
+      "comparator": "scaled_decode_first/bicubic",
+      "images": 240,
+      "mean_cpsnr_gain_db": -6.115967590392629,
+      "win_fraction": 0.0
+    }
+  ],
+  "exact_published_protocol_verified": false,
+  "interpretation": "Paired comparisons are against independent implementations on shared inputs. They do not establish superiority over the published method until its reported baselines and unspecified implementation details are independently reproduced."
+}

@@ -1,0 +1,120 @@
+{
+  "data_kind": "synthetic_coco",
+  "dataset_root": "/local/prism-45219528-0.HJiglS/data",
+  "degradations": [
+    {
+      "downsample_filter": "box",
+      "name": "center_box",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "triangle",
+      "name": "center_triangle",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "gaussian",
+      "name": "center_gaussian",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "lanczos3",
+      "name": "center_lanczos3",
+      "siting": "center",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "box",
+      "name": "left_box",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "triangle",
+      "name": "left_triangle",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "gaussian",
+      "name": "left_gaussian",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "lanczos3",
+      "name": "left_lanczos3",
+      "siting": "left",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "box",
+      "name": "cosited_box",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "triangle",
+      "name": "cosited_triangle",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "gaussian",
+      "name": "cosited_gaussian",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    },
+    {
+      "downsample_filter": "lanczos3",
+      "name": "cosited_lanczos3",
+      "siting": "cosited",
+      "upsample_filter": "bilinear"
+    }
+  ],
+  "description": "Cartesian reconstruction with detached polar uncertainty heads",
+  "loss": {
+    "adversarial_ramp_epochs": 1,
+    "adversarial_warmup_epochs": 0,
+    "adversarial_weight": 0.0,
+    "amplitude_weight": 0.01,
+    "edge_weight": 0.0,
+    "forward_weight": 0.0,
+    "phase_weight": 0.005,
+    "reconstruction": "l1",
+    "uncertainty_ramp_epochs": 1,
+    "uncertainty_warmup_epochs": 0
+  },
+  "manifest": "/local/prism-45219528-0.HJiglS/prism_coco.jsonl",
+  "max_images": 100,
+  "model": {
+    "backbone": "residual",
+    "depth": 8,
+    "detached_uncertainty": true,
+    "representation": "cartesian",
+    "uncertainty": true,
+    "width": 64
+  },
+  "name": "prism_cartesian_prob",
+  "output_dir": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_gpu_smoke_smoke100/prism_cartesian_prob",
+  "training": {
+    "allow_tf32": true,
+    "augment": true,
+    "batch_size": 16,
+    "crop_size": 256,
+    "device": "cuda",
+    "epochs": 2,
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.0001,
+    "min_learning_rate": 1e-06,
+    "persistent_workers": true,
+    "seed": 2026,
+    "validation_all_degradations": false,
+    "verify_hashes": false,
+    "weight_decay": 0.0001,
+    "workers": 8
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "best_checkpoint": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_polar/best.pth",
+  "best_chroma_l1": 0.003827320441053567,
+  "best_epoch": 25,
+  "completed_epochs": 25,
+  "last_checkpoint": "/ocean/projects/cis260224p/shared/brios/checkpoints/prism/prism_coco/prism_polar/last.pth",
+  "name": "prism_polar"
+}
