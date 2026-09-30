@@ -1,0 +1,8 @@
+{
+  "best_checkpoint": "/ocean/projects/cis260224p/shared/brios/checkpoints/v5_prism_mse100/best.pth",
+  "best_chroma_mse": 6.505821271125754e-05,
+  "best_epoch": 100,
+  "completed_epochs": 100,
+  "last_checkpoint": "/ocean/projects/cis260224p/shared/brios/checkpoints/v5_prism_mse100/last.pth",
+  "name": "v5_prism_mse"
+}

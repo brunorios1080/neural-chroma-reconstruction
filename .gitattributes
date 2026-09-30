@@ -1,0 +1,2 @@
+models/experiments/v5_prism_mse100/*.pth filter=lfs diff=lfs merge=lfs -text
+models/experiments/v5_prism_mse100/manifest.jsonl filter=lfs diff=lfs merge=lfs -text
